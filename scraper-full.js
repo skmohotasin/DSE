@@ -6,29 +6,60 @@ async function scrapeCategory(group) {
   try {
     const { data } = await axios.get(
       `https://dsebd.org/latest_share_price_scroll_group.php?group=${group}`,
-      { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' } }
+      {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+        }
+      }
     );
 
     const $ = cheerio.load(data);
+    const rows = $('.table.table-bordered tr');
+
+    console.log(`Found ${rows.length} rows for group ${group}`);
+
+    if (rows.length <= 1) {
+      console.error(`❌ No data rows found for group ${group}`);
+      return;
+    }
+
     const stocks = [];
 
-    $('.table.table-bordered tr:not(:first-child)').each((i, row) => {
+    rows.slice(1).each((i, row) => {
       const cols = $(row).find('td');
-      if (cols.length >= 10) {
-        stocks.push({
-          LastUpdated: new Date().toISOString(),
-          Symbol: $(cols[1]).text().trim(),
-          LTP: $(cols[2]).text().trim(),
-          High: $(cols[3]).text().trim(),
-          Low: $(cols[4]).text().trim(),
-          Close: $(cols[5]).text().trim(),
-          YCP: $(cols[6]).text().trim(),
-          NAV: $(cols[7]).text().trim(),
-          EPS: $(cols[8]).text().trim(),
-          Dividend: $(cols[9]).text().trim()
-        });
+
+      // Debug columns count and first column text per row
+      if (cols.length < 10) {
+        console.warn(`Skipping row ${i + 1} due to insufficient columns (${cols.length})`);
+        return;
       }
+
+      const symbol = $(cols[1]).text().trim();
+      if (!symbol) {
+        console.warn(`Skipping row ${i + 1} due to empty symbol`);
+        return;
+      }
+
+      stocks.push({
+        LastUpdated: new Date().toISOString().slice(0, 10),
+        Symbol: symbol,
+        LTP: $(cols[2]).text().trim(),
+        High: $(cols[3]).text().trim(),
+        Low: $(cols[4]).text().trim(),
+        Close: $(cols[5]).text().trim(),
+        YCP: $(cols[6]).text().trim(),
+        NAV: $(cols[7]).text().trim(),
+        EPS: $(cols[8]).text().trim(),
+        Dividend: $(cols[9]).text().trim()
+      });
     });
+
+    console.log(`Parsed ${stocks.length} stock entries`);
+
+    if (stocks.length === 0) {
+      console.error('❌ No valid stock data parsed. The page structure may have changed.');
+      return;
+    }
 
     await uploadToGoogleSheets(stocks, {
       group,

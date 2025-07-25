@@ -16,6 +16,10 @@ async function ensureSheetExists(sheets, spreadsheetId, sheetName) {
   }
 }
 
+function isEmpty(value) {
+  return value === undefined || value === null || value === '';
+}
+
 async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {}) {
   try {
     const auth = new GoogleAuth({
@@ -25,59 +29,79 @@ async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {})
 
     const sheets = google.sheets({ version: 'v4', auth: await auth.getClient() });
     const SPREADSHEET_ID = '1db29opTkQO4s9mwX9LZb_qJHXDzHgp2F4dDzxM58puA';
-
-    // Always use the same tab name to overwrite previous data
     const sheetName = `Category ${group}`;
-
-    // Different headers depending on daily or full data
-    const headers = isDaily
-      ? ['Date', 'Symbol', 'LTP', 'High', 'Low']
-      : ['LastUpdated', 'Symbol', 'LTP', 'High', 'Low', 'Close', 'YCP', 'NAV', 'EPS', 'Dividend'];
+    const fullHeaders = ['LastUpdated', 'Symbol', 'LTP', 'High', 'Low', 'Close', 'YCP', 'NAV', 'EPS', 'Dividend'];
 
     await ensureSheetExists(sheets, SPREADSHEET_ID, sheetName);
 
-    // Write headers to row 1
     await sheets.spreadsheets.values.update({
       spreadsheetId: SPREADSHEET_ID,
       range: `${sheetName}!A1`,
       valueInputOption: 'RAW',
-      resource: { values: [headers] }
+      resource: { values: [fullHeaders] }
     });
 
-    // Clear existing data from row 2 onwards
-    await sheets.spreadsheets.values.clear({
+    const existingRes = await sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET_ID,
-      range: `${sheetName}!A2:Z`,
+      range: `${sheetName}!A2:J`,
     });
+    const existingRows = existingRes.data.values || [];
 
-    // Prepare data rows
-    const values = isDaily
-      ? data.map(item => [
-          item.Date,
-          item.Symbol,
-          item.LTP,
-          item.High,
-          item.Low
-        ])
-      : data.map(item => [
+    const mergedRows = data.map((item, i) => {
+      const existingRow = existingRows[i] || [];
+
+      const first5 = isDaily
+        ? [
+            item.Date,
+            item.Symbol,
+            item.LTP,
+            item.High,
+            item.Low
+          ]
+        : [
+            item.LastUpdated,
+            item.Symbol,
+            item.LTP,
+            item.High,
+            item.Low
+          ];
+
+      function mergeCell(newVal, oldVal) {
+        return isEmpty(newVal) ? oldVal || '' : newVal;
+      }
+
+      if (isDaily) {
+        const last5 = existingRow.slice(5, 10);
+        const mergedFirst5 = first5.map((val, idx) => mergeCell(val, existingRow[idx]));
+        const mergedLast5 = last5.map(val => val || '');
+        return [...mergedFirst5, ...mergedLast5];
+      } else {
+        const fullData = [
           item.LastUpdated,
           item.Symbol,
           item.LTP,
           item.High,
           item.Low,
-          item.Close || '',
-          item.YCP || '',
-          item.NAV || '',
-          item.EPS || '',
-          item.Dividend || ''
-        ]);
+          item.Close,
+          item.YCP,
+          item.NAV,
+          item.EPS,
+          item.Dividend
+        ];
+        return fullData.map((val, idx) => mergeCell(val, existingRow[idx]));
+      }
+    });
 
-    // Write data starting at row 2
+    await sheets.spreadsheets.values.clear({
+      spreadsheetId: SPREADSHEET_ID,
+      range: `${sheetName}!A2:J`,
+    });
+
     await sheets.spreadsheets.values.update({
       spreadsheetId: SPREADSHEET_ID,
       range: `${sheetName}!A2`,
       valueInputOption: 'USER_ENTERED',
-      resource: { values }
+      resource: { values: mergedRows }
     });
 
     console.log(`✅ Updated ${sheetName} with ${data.length} records`);

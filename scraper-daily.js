@@ -26,7 +26,7 @@ async function scrapeDailyPrices(group) {
       const cols = $(row).find('td');
       if (cols.length >= 5) {
         stocks.push({
-          Date: new Date().toISOString(),
+          Date: new Date().toISOString().slice(0, 10),
           Symbol: $(cols[1]).text().trim(),
           LTP: $(cols[2]).text().trim(),
           High: $(cols[3]).text().trim(),
