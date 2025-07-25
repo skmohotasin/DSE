@@ -1,39 +1,88 @@
 const { google } = require('googleapis');
-const { authenticate } = require('@google-cloud/local-auth');
-const fs = require('fs');
+const { GoogleAuth } = require('google-auth-library');
 
-// Configure
-const SPREADSHEET_ID = 'YOUR_SHEET_ID'; // Replace with your Google Sheet ID
-const SHEET_NAME = 'Stocks'; // Tab name in your Sheet
-
-async function uploadToGoogleSheets(data) {
+async function ensureSheetExists(sheets, spreadsheetId, sheetName) {
   try {
-    const auth = await authenticate({
-      keyfilePath: './credentials.json',
+    const res = await sheets.spreadsheets.get({ spreadsheetId });
+    if (!res.data.sheets.some(s => s.properties.title === sheetName)) {
+      await sheets.spreadsheets.batchUpdate({
+        spreadsheetId,
+        resource: { requests: [{ addSheet: { properties: { title: sheetName } } }] }
+      });
+    }
+  } catch (error) {
+    console.error('Sheet creation failed:', error.message);
+    throw error;
+  }
+}
+
+async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {}) {
+  try {
+    const auth = new GoogleAuth({
+      keyFile: './credentials.json',
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
 
-    const sheets = google.sheets({ version: 'v4', auth });
+    const sheets = google.sheets({ version: 'v4', auth: await auth.getClient() });
+    const SPREADSHEET_ID = '1db29opTkQO4s9mwX9LZb_qJHXDzHgp2F4dDzxM58puA';
 
-    // Clear existing data
+    // Always use the same tab name to overwrite previous data
+    const sheetName = `Category ${group}`;
+
+    // Different headers depending on daily or full data
+    const headers = isDaily
+      ? ['Date', 'Symbol', 'LTP', 'High', 'Low']
+      : ['LastUpdated', 'Symbol', 'LTP', 'High', 'Low', 'Close', 'YCP', 'NAV', 'EPS', 'Dividend'];
+
+    await ensureSheetExists(sheets, SPREADSHEET_ID, sheetName);
+
+    // Write headers to row 1
+    await sheets.spreadsheets.values.update({
+      spreadsheetId: SPREADSHEET_ID,
+      range: `${sheetName}!A1`,
+      valueInputOption: 'RAW',
+      resource: { values: [headers] }
+    });
+
+    // Clear existing data from row 2 onwards
     await sheets.spreadsheets.values.clear({
       spreadsheetId: SPREADSHEET_ID,
-      range: `${SHEET_NAME}!A2:Z`, // Keeps headers
+      range: `${sheetName}!A2:Z`,
     });
 
-    // Prepare data (skip headers)
-    const values = data.map(row => Object.values(row));
+    // Prepare data rows
+    const values = isDaily
+      ? data.map(item => [
+          item.Date,
+          item.Symbol,
+          item.LTP,
+          item.High,
+          item.Low
+        ])
+      : data.map(item => [
+          item.LastUpdated,
+          item.Symbol,
+          item.LTP,
+          item.High,
+          item.Low,
+          item.Close || '',
+          item.YCP || '',
+          item.NAV || '',
+          item.EPS || '',
+          item.Dividend || ''
+        ]);
 
-    // Update sheet
-    await sheets.spreadsheets.values.append({
+    // Write data starting at row 2
+    await sheets.spreadsheets.values.update({
       spreadsheetId: SPREADSHEET_ID,
-      range: `${SHEET_NAME}!A2`,
+      range: `${sheetName}!A2`,
       valueInputOption: 'USER_ENTERED',
-      resource: { values },
+      resource: { values }
     });
 
+    console.log(`✅ Updated ${sheetName} with ${data.length} records`);
   } catch (error) {
-    console.error('Google Sheets Error:', error.message);
+    console.error('Sheets API Error:', error.message);
     throw error;
   }
 }
