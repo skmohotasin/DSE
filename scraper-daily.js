@@ -28,9 +28,13 @@ async function scrapeDailyPrices(group) {
         stocks.push({
           Date: new Date().toISOString().slice(0, 10),
           Symbol: $(cols[1]).text().trim(),
+          YCP: $(cols[6]).text().trim(),
           LTP: $(cols[2]).text().trim(),
+          CP: $(cols[5]).text().trim(),
+          Low: $(cols[4]).text().trim(),
           High: $(cols[3]).text().trim(),
-          Low: $(cols[4]).text().trim()
+          Change: $(cols[7]).text().trim(),
+          Volume: $(cols[10]).text().trim(),
         });
       }
     });

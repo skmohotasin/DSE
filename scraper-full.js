@@ -34,20 +34,16 @@ async function scrapeCategory(group) {
         return;
       }
 
-      const symbol = $(cols[1]).text().trim();
-      if (!symbol) {
-        console.warn(`Skipping row ${i + 1} due to empty symbol`);
-        return;
-      }
-
       stocks.push({
-        LastUpdated: new Date().toISOString().slice(0, 10),
-        Symbol: symbol,
-        LTP: $(cols[2]).text().trim(),
-        High: $(cols[3]).text().trim(),
-        Low: $(cols[4]).text().trim(),
-        Close: $(cols[5]).text().trim(),
+        Date: new Date().toISOString().slice(0, 10),
+        Symbol: $(cols[1]).text().trim(),
         YCP: $(cols[6]).text().trim(),
+        LTP: $(cols[2]).text().trim(),
+        CP: $(cols[5]).text().trim(),
+        Low: $(cols[4]).text().trim(),
+        High: $(cols[3]).text().trim(),
+        Change: $(cols[7]).text().trim(),
+        Volume: $(cols[10]).text().trim(),
         NAV: $(cols[7]).text().trim(),
         EPS: $(cols[8]).text().trim(),
         Dividend: $(cols[9]).text().trim()

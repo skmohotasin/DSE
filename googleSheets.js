@@ -30,7 +30,7 @@ async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {})
     const sheets = google.sheets({ version: 'v4', auth: await auth.getClient() });
     const SPREADSHEET_ID = '1db29opTkQO4s9mwX9LZb_qJHXDzHgp2F4dDzxM58puA';
     const sheetName = `Category ${group}`;
-    const fullHeaders = ['LastUpdated', 'Symbol', 'LTP', 'High', 'Low', 'Close', 'YCP', 'NAV', 'EPS', 'Dividend'];
+    const fullHeaders = ['Date', 'Trading Code ', 'YCP (Yesterdays closing price)', 'LTP (Last trading price)', 'CP (Closing Price)', 'Low', 'High', 'Change', 'Volume', 'NAV', 'EPS', 'Dividend'];
 
     await ensureSheetExists(sheets, SPREADSHEET_ID, sheetName);
 
@@ -50,40 +50,53 @@ async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {})
     const mergedRows = data.map((item, i) => {
       const existingRow = existingRows[i] || [];
 
-      const first5 = isDaily
+      const first9 = isDaily
         ? [
-            item.Date,
-            item.Symbol,
-            item.LTP,
-            item.High,
-            item.Low
-          ]
+          item.Date,
+          item.Symbol,
+          item.YCP,
+          item.LTP,
+          item.CP,
+          item.Low,
+          item.High,
+          item.Change,
+          item.Volume
+        ]
         : [
-            item.LastUpdated,
-            item.Symbol,
-            item.LTP,
-            item.High,
-            item.Low
-          ];
+          item.Date,
+          item.Symbol,
+          item.YCP,
+          item.LTP,
+          item.CP,
+          item.Low,
+          item.High,
+          item.Change,
+          item.Volume,
+          item.NAV,
+          item.EPS,
+          item.Dividend
+        ];
 
       function mergeCell(newVal, oldVal) {
         return isEmpty(newVal) ? oldVal || '' : newVal;
       }
 
       if (isDaily) {
-        const last5 = existingRow.slice(5, 10);
-        const mergedFirst5 = first5.map((val, idx) => mergeCell(val, existingRow[idx]));
-        const mergedLast5 = last5.map(val => val || '');
-        return [...mergedFirst5, ...mergedLast5];
+        const last3 = existingRow.slice(10, 12);
+        const mergedFirst9 = first9.map((val, idx) => mergeCell(val, existingRow[idx]));
+        const mergedlast3 = last3.map(val => val || '');
+        return [...mergedFirst9, ...mergedlast3];
       } else {
         const fullData = [
-          item.LastUpdated,
+          item.Date,
           item.Symbol,
-          item.LTP,
-          item.High,
-          item.Low,
-          item.Close,
           item.YCP,
+          item.LTP,
+          item.CP,
+          item.Low,
+          item.High,
+          item.Change,
+          item.Volume,
           item.NAV,
           item.EPS,
           item.Dividend
