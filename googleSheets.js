@@ -87,10 +87,10 @@ async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {})
       }
 
       if (isDaily) {
-        const last3 = existingRow.slice(10, 18);
+        const last8 = existingRow.slice(9, 18);
         const mergedFirst9 = first9.map((val, idx) => mergeCell(val, existingRow[idx]));
-        const mergedlast3 = last3.map(val => val || '');
-        return [...mergedFirst9, ...mergedlast3];
+        const mergedlast8 = last8.map(val => val || '');
+        return [...mergedFirst9, ...mergedlast8];
       } else {
         const fullData = [
           item.Date,
