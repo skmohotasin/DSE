@@ -1,5 +1,6 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
+const cliProgress = require('cli-progress');
 const { uploadToGoogleSheets } = require('./googleSheets');
 
 async function scrapeDailyPrices(group) {
@@ -22,7 +23,17 @@ async function scrapeDailyPrices(group) {
       return;
     }
 
-    rows.slice(1).each((i, row) => {
+    const dataRows = rows.slice(1).toArray();
+
+    const progressBar = new cliProgress.SingleBar({
+      format: 'Progress |{bar}| {percentage}% || {value}/{total} Stocks',
+      barCompleteChar: '\u2588',
+      barIncompleteChar: '\u2591',
+      hideCursor: true
+    });
+    progressBar.start(dataRows.length, 0);
+
+    dataRows.forEach((row, index) => {
       const cols = $(row).find('td');
       if (cols.length >= 5) {
         stocks.push({
@@ -37,7 +48,10 @@ async function scrapeDailyPrices(group) {
           Volume: $(cols[10]).text().trim(),
         });
       }
+      progressBar.update(index + 1);
     });
+
+    progressBar.stop();
 
     if (stocks.length === 0) {
       console.warn(`⚠️ No valid stock data parsed for group ${group}`);

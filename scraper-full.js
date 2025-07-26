@@ -1,5 +1,6 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
+const cliProgress = require('cli-progress');
 const { uploadToGoogleSheets } = require('./googleSheets');
 
 async function scrapeCompanyDetails(symbol) {
@@ -11,39 +12,49 @@ async function scrapeCompanyDetails(symbol) {
     });
 
     const $ = cheerio.load(data);
-    const pageText = $('body').text();
 
-    const extract = (label, after = ':') => {
-      const regex = new RegExp(`${label}\\s*${after}\\s*(.*?)\\s{2,}`, 'i');
-      const match = pageText.match(regex);
-      return match ? match[1].trim() : '';
-    };
+    const companyName = $('#section-to-print h2.BodyHead.topBodyHead i').first().text().trim();
 
-    // Extract NAV, EPS, Dividend too from the company page
-    const nav = extract("NAV");
-    const eps = extract("EPS");
-    const dividend = extract("Dividend");
+    let lastAGM = '';
+    $('div.col-sm-6.pull-left').each((_, el) => {
+      if ($(el).text().includes('Last AGM held on:')) {
+        lastAGM = $(el).find('i').text().trim();
+      }
+    });
+
+    let rangeLow = '';
+    let rangeHigh = '';
+    const companyTable = $('#company');
+    companyTable.find('th').each((_, el) => {
+      const text = $(el).text().trim().replace(/\s+/g, ' ');
+      if (text === "52 Weeks' Moving Range") {
+        const val = $(el).next('td').text().trim();
+        const match = val.match(/([\d.,]+)\s*-\s*([\d.,]+)/);
+        if (match) {
+          rangeLow = match[1].replace(/,/g, '');
+          rangeHigh = match[2].replace(/,/g, '');
+          range = Number(rangeHigh) - Number(rangeLow);
+        }
+      }
+    });
+
+    let nav = '';
+    companyTable.find('td').each((_, el) => {
+      const text = $(el).text().trim().toLowerCase();
+      if (text === 'nav' || text === 'nav per share') {
+        nav = $(el).next('td').text().trim();
+      }
+    });
 
     return {
-      Range52Wk: extract("52 Weeks' Moving Range"),
-      LastAGM: extract("Last AGM held on"),
-      EPSLastYr: extract("Using Basic EPS.*?Original.*?last year", ":"),
-      DividendLastYr: extract("Dividend.*?last year", ":"),
-      NAV: nav,
-      EPS: eps,
-      Dividend: dividend
+      CompanyName: companyName,
+      Range52Wk: { lowest: rangeLow, highest: rangeHigh, range: range },
+      LastAGM: lastAGM,
     };
+
   } catch (err) {
     console.warn(`⚠️ Could not fetch company details for ${symbol}: ${err.message}`);
-    return {
-      Range52Wk: '',
-      LastAGM: '',
-      EPSLastYr: '',
-      DividendLastYr: '',
-      NAV: '',
-      EPS: '',
-      Dividend: ''
-    };
+    return null;
   }
 }
 
@@ -72,11 +83,21 @@ async function scrapeCategory(group) {
 
     const dataRows = rows.slice(1).toArray();
 
-    for (const row of dataRows) {
+    const progressBar = new cliProgress.SingleBar({
+      format: 'Progress |{bar}| {percentage}% || {value}/{total} Companies',
+      barCompleteChar: '\u2588',
+      barIncompleteChar: '\u2591',
+      hideCursor: true
+    });
+    progressBar.start(dataRows.length, 0);
+
+    for (let i = 0; i < dataRows.length; i++) {
+      const row = dataRows[i];
       const cols = $(row).find('td');
 
       if (cols.length < 11) {
         console.warn('Skipping row due to insufficient columns');
+        progressBar.increment();
         continue;
       }
 
@@ -94,15 +115,20 @@ async function scrapeCategory(group) {
         High: $(cols[3]).text().trim(),
         Change: $(cols[7]).text().trim(),
         Volume: $(cols[10]).text().trim(),
+        CompanyName: extra.CompanyName,
+        Lowest: extra.Range52Wk.lowest,
+        Highest: extra.Range52Wk.highest,
+        Range52Wk: extra.Range52Wk.range,
         NAV: extra.NAV,
         EPS: extra.EPS,
         Dividend: extra.Dividend,
-        Range52Wk: extra.Range52Wk,
-        LastAGM: extra.LastAGM,
-        EPSLastYr: extra.EPSLastYr,
-        DividendLastYr: extra.DividendLastYr
+        LastAGM: extra.LastAGM
       });
+
+      progressBar.update(i + 1);
     }
+
+    progressBar.stop();
 
     console.log(`Parsed ${stocks.length} stock entries`);
 

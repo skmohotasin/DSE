@@ -30,7 +30,7 @@ async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {})
     const sheets = google.sheets({ version: 'v4', auth: await auth.getClient() });
     const SPREADSHEET_ID = '1db29opTkQO4s9mwX9LZb_qJHXDzHgp2F4dDzxM58puA';
     const sheetName = `Category ${group}`;
-    const fullHeaders = ['Date', 'Trading Code ', 'YCP (Yesterdays closing price)', 'LTP (Last trading price)', 'CP (Closing Price)', 'Low', 'High', 'Change', 'Volume', 'NAV', 'EPS', 'Dividend'];
+    const fullHeaders = ['Date', 'Trading Code ', 'YCP (Yesterdays closing price)', 'LTP (Last trading price)', 'CP (Closing Price)', 'Low', 'High', 'Change', 'Volume', 'Company Name' , 'Lowest (yearly)', 'Highest (yearly)', 'Range (yearly)' , 'NAV', 'EPS', 'Dividend', 'Last AGM'];
 
     await ensureSheetExists(sheets, SPREADSHEET_ID, sheetName);
 
@@ -72,9 +72,14 @@ async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {})
           item.High,
           item.Change,
           item.Volume,
+          item.CompanyName,
+          item.Lowest,
+          item.Highest,
+          item.Range52Wk,
           item.NAV,
           item.EPS,
-          item.Dividend
+          item.Dividend,
+          item.LastAGM
         ];
 
       function mergeCell(newVal, oldVal) {
@@ -82,7 +87,7 @@ async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {})
       }
 
       if (isDaily) {
-        const last3 = existingRow.slice(10, 12);
+        const last3 = existingRow.slice(10, 18);
         const mergedFirst9 = first9.map((val, idx) => mergeCell(val, existingRow[idx]));
         const mergedlast3 = last3.map(val => val || '');
         return [...mergedFirst9, ...mergedlast3];
@@ -97,9 +102,14 @@ async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {})
           item.High,
           item.Change,
           item.Volume,
+          item.CompanyName,
+          item.Lowest,
+          item.Highest,
+          item.Range52Wk,
           item.NAV,
           item.EPS,
-          item.Dividend
+          item.Dividend,
+          item.LastAGM
         ];
         return fullData.map((val, idx) => mergeCell(val, existingRow[idx]));
       }
