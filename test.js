@@ -11,41 +11,26 @@ async function scrapeNAV(symbol) {
 
         const $ = cheerio.load(data);
 
-        let nav = '';
-        const targetText = 'Financial Performance as per Audited Financial Statements as per IFRS/IAS or BFRS/BAS';
-        const heading = $(`td:contains("${targetText}")`).filter((_, el) => $(el).text().trim() === targetText).first();
+        const targetTable = $('table#company').eq(2);
 
-        const table = heading.closest('table').nextAll('table').first();
-        const headers = [];
+        let sector = '';
 
-        table.find('tr').each((i, row) => {
-            const cells = $(row).find('td, th');
-            if (i === 0) {
-                cells.each((_, cell) => {
-                    headers.push($(cell).text().trim().toLowerCase());
-                });
-            } else {
-                cells.each((j, cell) => {
-                    const header = headers[j];
-                    if (header && header.includes('nav per share')) {
-                        const value = $(cell).text().trim();
-                        if (!isNaN(parseFloat(value))) {
-                            nav = value;
-                        }
-                    }
-                });
+        targetTable.find('th').each((_, th) => {
+            const text = $(th).text().trim().toLowerCase();
+            if (text.includes('sector')) {
+                sector = $(th).next('td').text().trim();
             }
         });
 
-        return { NAV: nav };
+        console.log(`Sector: ${sector}`);
 
+        return { Dividend: sector };
 
     } catch (err) {
         console.warn(`⚠️ Could not fetch NAV for ${symbol}: ${err.message}`);
         return null;
     }
 }
-
 async function test() {
     const symbol = process.argv[2];
     if (!symbol) {
@@ -57,7 +42,7 @@ async function test() {
     const data = await scrapeNAV(symbol);
 
     if (data) {
-        console.log('NAV:', data.NAV);
+        console.log('NAV:', data.Dividend);
     } else {
         console.log('Failed to fetch NAV.');
     }

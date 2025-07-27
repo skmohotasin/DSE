@@ -30,7 +30,7 @@ async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {})
     const sheets = google.sheets({ version: 'v4', auth: await auth.getClient() });
     const SPREADSHEET_ID = '1db29opTkQO4s9mwX9LZb_qJHXDzHgp2F4dDzxM58puA';
     const sheetName = `Category ${group}`;
-    const fullHeaders = ['Date', 'Trading Code ', 'YCP (Yesterdays closing price)', 'LTP (Last trading price)', 'CP (Closing Price)', 'Low', 'High', 'Change', 'Volume', 'Company Name' , 'Lowest (yearly)', 'Highest (yearly)', 'Range (yearly)' , 'NAV', 'EPS', 'Dividend', 'Last AGM'];
+    const fullHeaders = ['Date', 'Trading Code ', 'YCP (Yesterdays closing price)', 'LTP (Last trading price)', 'CP (Closing Price)', 'Low', 'High', 'Change', 'Volume', 'Company Name' , 'Type', 'Lowest (yearly)', 'Highest (yearly)', 'Range (yearly)' , 'NAV', 'EPS', 'Dividend', 'Last AGM'];
 
     await ensureSheetExists(sheets, SPREADSHEET_ID, sheetName);
 
@@ -73,6 +73,7 @@ async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {})
           item.Change,
           item.Volume,
           item.CompanyName,
+          item.Sector,
           item.Lowest,
           item.Highest,
           item.Range52Wk,
@@ -87,7 +88,7 @@ async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {})
       }
 
       if (isDaily) {
-        const last8 = existingRow.slice(9, 18);
+        const last8 = existingRow.slice(9, 19);
         const mergedFirst9 = first9.map((val, idx) => mergeCell(val, existingRow[idx]));
         const mergedlast8 = last8.map(val => val || '');
         return [...mergedFirst9, ...mergedlast8];
@@ -103,6 +104,7 @@ async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {})
           item.Change,
           item.Volume,
           item.CompanyName,
+          item.Sector,
           item.Lowest,
           item.Highest,
           item.Range52Wk,

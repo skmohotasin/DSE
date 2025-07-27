@@ -14,11 +14,14 @@ async function scrapeCompanyDetails(symbol) {
     const $ = cheerio.load(data);
 
     const companyName = $('#section-to-print h2.BodyHead.topBodyHead i').first().text().trim();
+    const targetTableTwo = $('table#company').eq(2);
 
-    let lastAGM = '';
-    $('div.col-sm-6.pull-left').each((_, el) => {
-      if ($(el).text().includes('Last AGM held on:')) {
-        lastAGM = $(el).find('i').text().trim();
+    let sector = '';
+
+    targetTableTwo.find('th').each((_, th) => {
+      const text = $(th).text().trim().toLowerCase();
+      if (text.includes('sector')) {
+        sector = $(th).next('td').text().trim();
       }
     });
 
@@ -38,17 +41,49 @@ async function scrapeCompanyDetails(symbol) {
       }
     });
 
-    let nav = '';
-    companyTable.find('td').each((_, el) => {
-      const text = $(el).text().trim().toLowerCase();
-      if (text === 'nav' || text === 'nav per share') {
-        nav = $(el).next('td').text().trim();
+    let DividendValue = '';
+    let EPSValue = '';
+
+    $('#company tbody tr').each((_, row) => {
+      const cells = $(row).find('td');
+      const yearText = cells.eq(0).text().trim();
+      const is2024 = yearText === '2024' || cells.eq(1).text().trim() === '2024';
+      if (is2024) {
+        DividendValue = cells.eq(7).text().trim();
+        EPSValue = cells.eq(4).text().trim();
       }
     });
 
+    let NAVValue = '';
+
+    const targetTable = $('table#company').eq(7);
+    const rows = targetTable.find('tbody tr');
+
+    rows.each((_, row) => {
+      const cells = $(row).find('td');
+      const yearText = cells.eq(0).text().trim();
+      const is2024 = yearText === '2024' || cells.eq(1).text().trim() === '2024';
+      if (is2024) {
+        NAVValue = cells.eq(7).text().trim();
+      }
+    });
+
+
+    let lastAGM = '';
+    $('div.col-sm-6.pull-left').each((_, el) => {
+      if ($(el).text().includes('Last AGM held on:')) {
+        lastAGM = $(el).find('i').text().replace(/\s+/g, ' ').trim();
+      }
+    });
+
+
     return {
+      Sector: sector,
       CompanyName: companyName,
       Range52Wk: { lowest: rangeLow, highest: rangeHigh, range: range },
+      NAV: NAVValue,
+      EPS: EPSValue,
+      Dividend: DividendValue,
       LastAGM: lastAGM,
     };
 
@@ -115,6 +150,7 @@ async function scrapeCategory(group) {
         High: $(cols[3]).text().trim(),
         Change: $(cols[7]).text().trim(),
         Volume: $(cols[10]).text().trim(),
+        Sector: extra.Sector,
         CompanyName: extra.CompanyName,
         Lowest: extra.Range52Wk.lowest,
         Highest: extra.Range52Wk.highest,
