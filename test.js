@@ -11,20 +11,17 @@ async function scrapeNAV(symbol) {
 
         const $ = cheerio.load(data);
 
-        const targetTable = $('table#company').eq(2);
+        const targetTableTwo = $('table#company').eq(10);
+        let category = '';
 
-        let sector = '';
-
-        targetTable.find('th').each((_, th) => {
-            const text = $(th).text().trim().toLowerCase();
-            if (text.includes('sector')) {
-                sector = $(th).next('td').text().trim();
+        targetTableTwo.find('td').each((_, td) => {
+            const text = $(td).text().trim();
+            if (text === 'Market Category') {
+                category = $(td).next('td').text().trim();
             }
         });
 
-        console.log(`Sector: ${sector}`);
-
-        return { Dividend: sector };
+        return { Dividend: category };
 
     } catch (err) {
         console.warn(`⚠️ Could not fetch NAV for ${symbol}: ${err.message}`);

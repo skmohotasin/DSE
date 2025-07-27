@@ -78,8 +78,8 @@ async function scrapeCompanyDetails(symbol) {
 
 
     return {
-      Sector: sector,
       CompanyName: companyName,
+      Sector: sector,
       Range52Wk: { lowest: rangeLow, highest: rangeHigh, range: range },
       NAV: NAVValue,
       EPS: EPSValue,
@@ -150,8 +150,8 @@ async function scrapeCategory(group) {
         High: $(cols[3]).text().trim(),
         Change: $(cols[7]).text().trim(),
         Volume: $(cols[10]).text().trim(),
-        Sector: extra.Sector,
         CompanyName: extra.CompanyName,
+        Sector: extra.Sector,
         Lowest: extra.Range52Wk.lowest,
         Highest: extra.Range52Wk.highest,
         Range52Wk: extra.Range52Wk.range,

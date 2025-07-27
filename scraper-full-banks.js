@@ -14,14 +14,13 @@ async function scrapeCompanyDetails(symbol) {
     const $ = cheerio.load(data);
 
     const companyName = $('#section-to-print h2.BodyHead.topBodyHead i').first().text().trim();
-    const targetTableTwo = $('table#company').eq(2);
+    const targetTableTwo = $('table#company').eq(10);
+    let category = '';
 
-    let sector = '';
-
-    targetTableTwo.find('th').each((_, th) => {
-      const text = $(th).text().trim().toLowerCase();
-      if (text.includes('sector')) {
-        sector = $(th).next('td').text().trim();
+    targetTableTwo.find('td').each((_, td) => {
+      const text = $(td).text().trim();
+      if (text === 'Market Category') {
+        category = $(td).next('td').text().trim();
       }
     });
 
@@ -78,8 +77,8 @@ async function scrapeCompanyDetails(symbol) {
 
 
     return {
-      Sector: sector,
       CompanyName: companyName,
+      Category: category,
       Range52Wk: { lowest: rangeLow, highest: rangeHigh, range: range },
       NAV: NAVValue,
       EPS: EPSValue,
@@ -150,8 +149,8 @@ async function scrapeCategory() {
         High: $(cols[3]).text().trim(),
         Change: $(cols[7]).text().trim(),
         Volume: $(cols[10]).text().trim(),
-        Sector: extra.Sector,
         CompanyName: extra.CompanyName,
+        Category: extra.Category,
         Lowest: extra.Range52Wk.lowest,
         Highest: extra.Range52Wk.highest,
         Range52Wk: extra.Range52Wk.range,
@@ -173,7 +172,7 @@ async function scrapeCategory() {
       return;
     }
 
-    await uploadToGoogleSheets(stocks, {isDaily: false});
+    await uploadToGoogleSheets(stocks, { isDaily: false });
 
     console.log(`✅ Updated Category Bank with ${stocks.length} records`);
   } catch (error) {
