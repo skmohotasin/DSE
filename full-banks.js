@@ -24,6 +24,22 @@ async function scrapeCompanyDetails(symbol) {
       }
     });
 
+    const targetTableTen = $('table#company').eq(10);
+    let govtShare = '';
+
+    targetTableTen.find('tbody tr').each((_, tr) => {
+      const firstTd = $(tr).find('td').first().text().trim();
+      if (firstTd.includes('Share Holding Percentage') && firstTd.includes('Jun 30, 2025')) {
+        const nestedTds = $(tr).find('td').eq(1).find('table tbody tr td');
+        nestedTds.each((_, td) => {
+          const text = $(td).text().trim();
+          if (text.startsWith('Govt:')) {
+            govtShare = text.split('Govt:')[1].trim();
+          }
+        });
+      }
+    });
+
     let rangeLow = '';
     let rangeHigh = '';
     const companyTable = $('#company');
@@ -79,6 +95,7 @@ async function scrapeCompanyDetails(symbol) {
     return {
       CompanyName: companyName,
       Category: category,
+      GovtShare: govtShare,
       Range52Wk: { lowest: rangeLow, highest: rangeHigh, range: range },
       NAV: NAVValue,
       EPS: EPSValue,
@@ -151,6 +168,7 @@ async function scrapeCategory() {
         Volume: $(cols[10]).text().trim(),
         CompanyName: extra.CompanyName,
         Category: extra.Category,
+        Govtpercentage: extra.GovtShare,
         Lowest: extra.Range52Wk.lowest,
         Highest: extra.Range52Wk.highest,
         Range52Wk: extra.Range52Wk.range,

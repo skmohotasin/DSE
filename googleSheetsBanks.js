@@ -30,7 +30,7 @@ async function uploadToGoogleSheets(data, { isDaily = false } = {}) {
     const sheets = google.sheets({ version: 'v4', auth: await auth.getClient() });
     const SPREADSHEET_ID = '1db29opTkQO4s9mwX9LZb_qJHXDzHgp2F4dDzxM58puA';
     const sheetName = `Type Bank`;
-    const fullHeaders = ['Date', 'Trading Code ', 'YCP (Yesterdays closing price)', 'LTP (Last trading price)', 'CP (Closing Price)', 'Low', 'High', 'Change', 'Volume', 'Company Name' , 'Category', 'Lowest (yearly)', 'Highest (yearly)', 'Range (yearly)' , 'NAV', 'EPS', 'Dividend', 'Last AGM'];
+    const fullHeaders = ['Date', 'Trading Code ', 'YCP (Yesterdays closing price)', 'LTP (Last trading price)', 'CP (Closing Price)', 'Low', 'High', 'Change', 'Volume', 'Company Name' , 'Category', 'Govt Share' , 'Lowest (yearly)', 'Highest (yearly)', 'Range (yearly)' , 'NAV', 'EPS', 'Dividend', 'Last AGM'];
 
     await ensureSheetExists(sheets, SPREADSHEET_ID, sheetName);
 
@@ -74,6 +74,7 @@ async function uploadToGoogleSheets(data, { isDaily = false } = {}) {
           item.Volume,
           item.CompanyName,
           item.Category,
+          item.Govtpercentage,
           item.Lowest,
           item.Highest,
           item.Range52Wk,
@@ -105,6 +106,7 @@ async function uploadToGoogleSheets(data, { isDaily = false } = {}) {
           item.Volume,
           item.CompanyName,
           item.Category,
+          item.Govtpercentage,
           item.Lowest,
           item.Highest,
           item.Range52Wk,

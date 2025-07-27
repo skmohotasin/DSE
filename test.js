@@ -11,17 +11,24 @@ async function scrapeNAV(symbol) {
 
         const $ = cheerio.load(data);
 
-        const targetTableTwo = $('table#company').eq(10);
-        let category = '';
+        const targetTable = $('table#company').eq(10);
+        let govtShare = '';
 
-        targetTableTwo.find('td').each((_, td) => {
-            const text = $(td).text().trim();
-            if (text === 'Market Category') {
-                category = $(td).next('td').text().trim();
+        targetTable.find('tbody tr').each((_, tr) => {
+            const firstTd = $(tr).find('td').first().text().trim();
+            if (firstTd.includes('Share Holding Percentage') && firstTd.includes('Jun 30, 2025')) {
+                const nestedTds = $(tr).find('td').eq(1).find('table tbody tr td');
+                nestedTds.each((_, td) => {
+                    const text = $(td).text().trim();
+                    if (text.startsWith('Govt:')) {
+                        govtShare = text.split('Govt:')[1].trim();
+                    }
+                });
             }
         });
 
-        return { Dividend: category };
+        console.log('Govt Share Holding (as on Jun 30, 2025):', govtShare);
+        return { Dividend: govtShare };
 
     } catch (err) {
         console.warn(`⚠️ Could not fetch NAV for ${symbol}: ${err.message}`);
