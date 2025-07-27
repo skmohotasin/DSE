@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "D": "npm run DA && npm run DB",
-    "F": "npm run FA && npm run FB",
+    "D": "npm run DA && npm run DB && npm run DBank",
+    "F": "npm run FA && npm run FB && npm run FBank",
+    "DBank": "node scraper-daily-banks.js Bank",
+    "FBank": "node scraper-full-banks.js Bank",
     "DA": "node scraper-daily.js A",
     "DB": "node scraper-daily.js B",
     "FA": "node scraper-full.js A",
