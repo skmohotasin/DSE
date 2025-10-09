@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "D": "npm run DA && npm run DB && npm run DBank",
     "F": "npm run FA && npm run FB && npm run FBank",
-    "TCode": "node trading-code.js A && node trading-code.js B && node trading-code.js BANK",
+    "tcode": "node trading-code.js A && node trading-code.js B && node trading-code.js BANK",
     "DBank": "node daily-banks.js Bank",
     "FBank": "node full-banks.js Bank",
     "DA": "node daily.js A",
