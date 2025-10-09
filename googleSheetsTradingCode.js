@@ -19,7 +19,7 @@ async function ensureSheetExists(sheets, spreadsheetId, tabName) {
   }
 }
 
-async function uploadToGoogleSheets(data) {
+async function uploadAllCategoriesToGoogleSheets(categoryA = [], categoryB = [], bank = []) {
   try {
     const auth = new GoogleAuth({
       keyFile: './credentials.json',
@@ -28,7 +28,7 @@ async function uploadToGoogleSheets(data) {
 
     const sheets = google.sheets({ version: 'v4', auth: await auth.getClient() });
     const SPREADSHEET_ID = '1FxV4HYgoV7qYXjw6eEqF4Ax4tjHQqVJ9G-fwKLxaHxI';
-    const tabName = `Trading Code`;
+    const tabName = 'Trading Code';
     const headers = ['Date', 'Category A', 'Category B', 'Type Bank'];
 
     await ensureSheetExists(sheets, SPREADSHEET_ID, tabName);
@@ -40,50 +40,17 @@ async function uploadToGoogleSheets(data) {
       resource: { values: [headers] }
     });
 
-    const existingRes = await sheets.spreadsheets.values.get({
-      spreadsheetId: SPREADSHEET_ID,
-      range: `${tabName}!A2:D`,
-    });
-
-    const existingRows = existingRes.data.values || [];
     const today = formatDate(new Date());
 
-    const categoryField =
-      data[0].SymbolCategoryA !== undefined
-        ? 'A'
-        : data[0].SymbolCategoryB !== undefined
-        ? 'B'
-        : 'Bank';
+    const maxRows = Math.max(categoryA.length, categoryB.length, bank.length);
 
-    const value =
-      categoryField === 'A'
-        ? data[0].SymbolCategoryA
-        : categoryField === 'B'
-        ? data[0].SymbolCategoryB
-        : data[0].SymbolTypeBank;
-
-    let updated = false;
-
-    const newRows = existingRows.map(row => {
-      const [date, catA, catB, bank] = row;
-      if (date === today) {
-        updated = true;
-        return [
-          date || today,
-          categoryField === 'A' ? value : catA || '',
-          categoryField === 'B' ? value : catB || '',
-          categoryField === 'Bank' ? value : bank || ''
-        ];
-      }
-      return row;
-    });
-
-    if (!updated) {
-      newRows.push([
+    const values = [];
+    for (let i = 0; i < maxRows; i++) {
+      values.push([
         today,
-        categoryField === 'A' ? value : '',
-        categoryField === 'B' ? value : '',
-        categoryField === 'Bank' ? value : ''
+        categoryA[i]?.Symbol || '',
+        categoryB[i]?.Symbol || '',
+        bank[i]?.Symbol || ''
       ]);
     }
 
@@ -96,14 +63,13 @@ async function uploadToGoogleSheets(data) {
       spreadsheetId: SPREADSHEET_ID,
       range: `${tabName}!A2`,
       valueInputOption: 'USER_ENTERED',
-      resource: { values: newRows }
+      resource: { values }
     });
 
-    console.log(`✅ Updated ${tabName} for ${today} (${categoryField})`);
+    console.log(`✅ Updated ${tabName} for ${today} with all categories`);
   } catch (error) {
     console.error('Sheets API Error:', error.message);
-    throw error;
   }
 }
 
-module.exports = { uploadToGoogleSheets };
+module.exports = { uploadAllCategoriesToGoogleSheets };
