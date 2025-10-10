@@ -13,7 +13,9 @@ function getColumnLetter(colIndex) {
 
 async function ensureSheetExists(sheets, spreadsheetId, tabName) {
   const res = await sheets.spreadsheets.get({ spreadsheetId });
-  if (!res.data.sheets.some(s => s.properties.title === tabName)) {
+  const existingSheet = res.data.sheets.find(s => s.properties.title === tabName);
+
+  if (!existingSheet) {
     await sheets.spreadsheets.batchUpdate({
       spreadsheetId,
       resource: { requests: [{ addSheet: { properties: { title: tabName } } }] }
@@ -34,6 +36,10 @@ async function uploadExcelToGoogleSheets(filePath, spreadsheetId) {
     if (!data.length) continue;
 
     await ensureSheetExists(sheets, spreadsheetId, sheetName);
+    await sheets.spreadsheets.values.clear({
+      spreadsheetId,
+      range: `'${sheetName}'`
+    });
 
     const lastColLetter = getColumnLetter(data[0].length - 1);
     await sheets.spreadsheets.values.update({

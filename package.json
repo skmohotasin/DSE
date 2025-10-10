@@ -14,7 +14,9 @@
     "FullCatA": "node ./all-data/full.js A",
     "FullCatB": "node ./all-data/full.js B",
     "all": "npm run DailyAll && npm run FullAll",
-    "FullRSI": "node ./RSI/RSI-1Y.js"
+    "FullRSI": "node ./RSI/Price-1Y.js",
+    "CalRSIY": "node ./RSI/calculateRSI_1Y.js",
+    "CalRSIM": "node ./RSI/calculateRSI_1M.js"
   },
   "repository": {
     "type": "git",

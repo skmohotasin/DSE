@@ -111,13 +111,13 @@ async function fetchRSIData(code) {
             progressBar.update(page * batchSize + c + 1);
         }
 
-        const sheetName = `RSI 1Y Page ${page + 1}`;
+        const sheetName = `Price 1Y Page ${page + 1}`;
         const ws = XLSX.utils.aoa_to_sheet(tempData);
         XLSX.utils.book_append_sheet(wb, ws, sheetName);
     }
 
     progressBar.stop();
-    XLSX.writeFile(wb, './RSI_1Y_temp.xlsx');
-    console.log('✅ Temporary Excel file saved: RSI_1Y_temp.xlsx with multiple pages');
-    await uploadExcelToGoogleSheets('./RSI_1Y_temp.xlsx', '1FxV4HYgoV7qYXjw6eEqF4Ax4tjHQqVJ9G-fwKLxaHxI');
+    XLSX.writeFile(wb, './Price_1Y_temp.xlsx');
+    console.log('✅ Temporary Excel file saved: Price_1Y_temp.xlsx with multiple pages');
+    await uploadExcelToGoogleSheets('./Price_1Y_temp.xlsx', '1FxV4HYgoV7qYXjw6eEqF4Ax4tjHQqVJ9G-fwKLxaHxI');
 })();
