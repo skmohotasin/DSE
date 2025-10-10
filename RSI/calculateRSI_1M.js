@@ -1,8 +1,9 @@
 const XLSX = require("xlsx");
 const cliProgress = require("cli-progress");
 const { uploadExcelToGoogleSheets } = require("./googleSheetsRSI1Y");
+const windowSize = parseInt(process.argv[2], 10) || 22;
 
-function calculateCumulativeRSIByMonth(prices, window = 22) {
+function calculateCumulativeRSIByMonth(prices, window = windowSize) {
   const results = [];
 
   for (let i = 0; i < prices.length; i++) {
@@ -39,7 +40,7 @@ function calculateCumulativeRSIByMonth(prices, window = 22) {
   return results;
 }
 
-function processRSIExcelByMonth(inputFile, outputFile) {
+function processRSIExcelByMonth(inputFile, outputFile, window) {
   const wb = XLSX.readFile(inputFile);
   const newWb = XLSX.utils.book_new();
 
@@ -55,7 +56,7 @@ function processRSIExcelByMonth(inputFile, outputFile) {
     );
 
     const progressBar = new cliProgress.SingleBar(
-      { format: `${sheetName} | RSI 1M |{bar}| {percentage}% | {value}/{total} codes` },
+      { format: `${sheetName} | RSI ${window}D |{bar}| {percentage}% | {value}/{total} codes` },
       cliProgress.Presets.shades_classic
     );
 
@@ -63,7 +64,7 @@ function processRSIExcelByMonth(inputFile, outputFile) {
 
     for (let c = 0; c < priceColumns.length; c++) {
       const prices = priceColumns[c];
-      const RSIvalues = calculateCumulativeRSIByMonth(prices, 22);
+      const RSIvalues = calculateCumulativeRSIByMonth(prices, window);
 
       for (let i = 0; i < dates.length; i++) {
         if (!rsiSheet[i + 1]) rsiSheet.push([dates[i]]);
@@ -75,23 +76,28 @@ function processRSIExcelByMonth(inputFile, outputFile) {
 
     progressBar.stop();
 
-    const newSheetName = `RSI 1M Page ${sheetIndex + 1}`;
+    const newSheetName =  window != 22 ? `RSI ${window}D Page ${sheetIndex + 1}` : `RSI 1M Page ${sheetIndex + 1}`;
     const newWs = XLSX.utils.aoa_to_sheet(rsiSheet);
     XLSX.utils.book_append_sheet(newWb, newWs, newSheetName);
   });
 
   XLSX.writeFile(newWb, outputFile);
-  console.log(`✅ 1M RSI calculation complete. Saved as: ${outputFile}`);
+  console.log(`✅ ${window}D RSI calculation complete. Saved as: ${outputFile}`);
 }
 
-async function runRSI1M() {
+async function runRSI1M(windowSize) {
   const inputFile = "./Price_1Y_temp.xlsx";
-  const outputFile = "./RSI_1M_temp.xlsx";
+  const outputFile = windowSize != 22 ? `./RSI_${windowSize}D_temp.xlsx` : "./RSI_1M_temp.xlsx";
 
-  processRSIExcelByMonth(inputFile, outputFile);
-
-  await uploadExcelToGoogleSheets(outputFile, "1J81OSaZFJJx-F_fJEVnA4x0FxSOKoIDXskaibdAokBw");
-  console.log("✅ RSI 1M uploaded to Google Sheets");
+  processRSIExcelByMonth(inputFile, outputFile, windowSize);
+  
+  if (windowSize === 22){
+    await uploadExcelToGoogleSheets(outputFile, "1J81OSaZFJJx-F_fJEVnA4x0FxSOKoIDXskaibdAokBw");
+    console.log("✅ RSI 1M calculation done");
+  }
+  else  {
+    console.log(`✅ RSI ${windowSize}D calculation done`);
+  }
 }
 
-runRSI1M();
+runRSI1M(windowSize);
