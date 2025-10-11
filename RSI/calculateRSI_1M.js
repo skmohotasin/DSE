@@ -96,6 +96,7 @@ async function runRSI1M(windowSize) {
     console.log("✅ RSI 1M calculation done");
   }
   else  {
+    await uploadExcelToGoogleSheets(outputFile, "1DxB91za_aQ2Sz1rtAerdn8RJVApHWOJjfKifYaLHPSQ");
     console.log(`✅ RSI ${windowSize}D calculation done`);
   }
 }
