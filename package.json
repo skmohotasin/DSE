@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "DailyAll": "npm run DailyCatA && npm run DailyCatB && npm run DailyBank",
     "FullAll": "npm run FullCatA && npm run FullCatB && npm run FullBank",
+    "RSI": "npm run FullRSI && npm run CalRSIY & npm run CalRSIM & npm run CalRSIM -- 14",
     "DailyBank": "node ./banks-only/daily-banks.js Bank",
     "FullBank": "node ./banks-only/full-banks.js Bank",
     "DailyCatA": "node ./all-data/daily.js A",
