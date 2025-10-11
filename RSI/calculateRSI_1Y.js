@@ -25,8 +25,8 @@ function calculateCumulativeRSI(prices) {
     else if (avgLoss === 0) RS = avgGain;
     else if (avgGain === 0) RS = 1 / (avgLoss * 10);
     else RS = avgGain / avgLoss;
-    const RSI = 100 - 100 / (1 + RS);
 
+    const RSI = 100 - 100 / (1 + RS);
     results.push(Number(RSI.toFixed(2)));
   }
 
@@ -35,15 +35,14 @@ function calculateCumulativeRSI(prices) {
 
 function processRSIExcel(inputFile, outputFile) {
   const wb = XLSX.readFile(inputFile);
-  const newWb = XLSX.utils.book_new();
+  const mergedMap = new Map();
+  const allHeadersSet = new Set();
 
-  wb.SheetNames.forEach((sheetName, sheetIndex) => {
+  wb.SheetNames.forEach(sheetName => {
     const ws = wb.Sheets[sheetName];
     const data = XLSX.utils.sheet_to_json(ws, { header: 1 });
     const headers = data[0];
     const dates = data.slice(1).map(r => r[0]);
-    const rsiSheet = [["Date", ...headers.slice(1)]];
-
     const priceColumns = headers.slice(1).map((_, i) =>
       data.slice(1).map(r => (r[i + 1] !== undefined && r[i + 1] !== "" ? parseFloat(r[i + 1]) : null))
     );
@@ -52,7 +51,6 @@ function processRSIExcel(inputFile, outputFile) {
       { format: `${sheetName} |{bar}| {percentage}% | {value}/{total} codes` },
       cliProgress.Presets.shades_classic
     );
-
     progressBar.start(priceColumns.length, 0);
 
     for (let c = 0; c < priceColumns.length; c++) {
@@ -60,22 +58,36 @@ function processRSIExcel(inputFile, outputFile) {
       const RSIvalues = calculateCumulativeRSI(prices);
 
       for (let i = 0; i < dates.length; i++) {
-        if (!rsiSheet[i + 1]) rsiSheet.push([dates[i]]);
-        rsiSheet[i + 1][c + 1] = RSIvalues[i];
+        const date = dates[i];
+        const headerName = headers[c + 1];
+        if (!allHeadersSet.has(headerName)) allHeadersSet.add(headerName);
+
+        if (!mergedMap.has(date)) mergedMap.set(date, { Date: date });
+        mergedMap.get(date)[headerName] = RSIvalues[i];
       }
 
       progressBar.update(c + 1);
     }
 
     progressBar.stop();
-
-    const newSheetName = `RSI 1Y Page ${sheetIndex + 1}`;
-    const newWs = XLSX.utils.aoa_to_sheet(rsiSheet);
-    XLSX.utils.book_append_sheet(newWb, newWs, newSheetName);
   });
 
+  const allHeaders = ["Date", ...Array.from(allHeadersSet)];
+  const allSheetsData = [allHeaders];
+
+  const sortedDates = Array.from(mergedMap.keys()).sort((a, b) => new Date(a) - new Date(b));
+  sortedDates.forEach(date => {
+    const rowObj = mergedMap.get(date);
+    const row = allHeaders.map(h => (rowObj[h] !== undefined ? rowObj[h] : null));
+    allSheetsData.push(row);
+  });
+
+  const newWb = XLSX.utils.book_new();
+  const mergedWs = XLSX.utils.aoa_to_sheet(allSheetsData);
+  XLSX.utils.book_append_sheet(newWb, mergedWs, "RSI 1Y");
+
   XLSX.writeFile(newWb, outputFile);
-  console.log(`✅ RSI calculation complete. Saved as: ${outputFile}`);
+  console.log(`✅ RSI 1Y calculation complete. Saved as: ${outputFile}`);
 }
 
 async function runRSI1Y() {
@@ -89,4 +101,3 @@ async function runRSI1Y() {
 }
 
 runRSI1Y();
-

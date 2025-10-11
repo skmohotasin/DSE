@@ -74,50 +74,44 @@ async function fetchRSIData(code) {
     console.log(`Found ${codes.length} trading codes`);
 
     const dates = generateLast365Days();
-
     const progressBar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
     progressBar.start(codes.length, 0);
 
-    const wb = XLSX.utils.book_new();
+    const mergedData = [['Date', ...codes]];
+    for (let d of dates) mergedData.push([d, ...Array(codes.length).fill(null)]);
 
-    const batchSize = 26;
-    for (let page = 0; page * batchSize < codes.length; page++) {
-        const batchCodes = codes.slice(page * batchSize, (page + 1) * batchSize);
-        const tempData = [['Date', ...batchCodes]];
-        for (let d of dates) tempData.push([d, ...Array(batchCodes.length).fill(null)]);
+    for (let c = 0; c < codes.length; c++) {
+        const code = codes[c];
+        const rsiData = await fetchRSIData(code);
 
-        for (let c = 0; c < batchCodes.length; c++) {
-            const code = batchCodes[c];
-            const rsiData = await fetchRSIData(code);
+        if (rsiData.length) {
+            const datePriceMap = {};
+            rsiData.forEach(([date, price]) => {
+                const d = new Date(date);
+                const day = String(d.getDate()).padStart(2, '0');
+                const month = String(d.getMonth() + 1).padStart(2, '0');
+                const year = d.getFullYear();
+                const formatted = `${day}/${month}/${year}`;
+                datePriceMap[formatted] = price;
+            });
 
-            if (rsiData.length) {
-                const datePriceMap = {};
-                rsiData.forEach(([date, price]) => {
-                    const d = new Date(date);
-                    const day = String(d.getDate()).padStart(2, '0');
-                    const month = String(d.getMonth() + 1).padStart(2, '0');
-                    const year = d.getFullYear();
-                    const formatted = `${day}/${month}/${year}`;
-                    datePriceMap[formatted] = price;
-                });
-
-                let lastValue = null;
-                for (let i = 0; i < dates.length; i++) {
-                    if (datePriceMap[dates[i]] !== undefined) lastValue = datePriceMap[dates[i]];
-                    tempData[i + 1][c + 1] = lastValue !== null ? lastValue : '';
-                }
+            let lastValue = null;
+            for (let i = 0; i < dates.length; i++) {
+                if (datePriceMap[dates[i]] !== undefined) lastValue = datePriceMap[dates[i]];
+                mergedData[i + 1][c + 1] = lastValue !== null ? lastValue : '';
             }
-
-            progressBar.update(page * batchSize + c + 1);
         }
 
-        const sheetName = `Price 1Y Page ${page + 1}`;
-        const ws = XLSX.utils.aoa_to_sheet(tempData);
-        XLSX.utils.book_append_sheet(wb, ws, sheetName);
+        progressBar.update(c + 1);
     }
 
     progressBar.stop();
+
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.aoa_to_sheet(mergedData);
+    XLSX.utils.book_append_sheet(wb, ws, 'Price 1Y');
     XLSX.writeFile(wb, './Price_1Y_temp.xlsx');
-    console.log('✅ Temporary Excel file saved: Price_1Y_temp.xlsx with multiple pages');
+
+    console.log('✅ Temporary Excel file saved: Price_1Y_temp.xlsx (merged all codes)');
     await uploadExcelToGoogleSheets('./Price_1Y_temp.xlsx', '1FxV4HYgoV7qYXjw6eEqF4Ax4tjHQqVJ9G-fwKLxaHxI');
 })();
