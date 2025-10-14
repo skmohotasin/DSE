@@ -76,18 +76,24 @@ function processRSIExcelByMonth(inputFile, outputFile, window) {
 
     progressBar.stop();
   });
-
-  const allHeaders = ["Date", ...Array.from(allHeadersSet)];
+  
+  const allHeaders = ["Date", ...Array.from(allHeadersSet).sort((a, b) => a.localeCompare(b))];
   const allSheetsData = [allHeaders];
 
-  Array.from(mergedMap.keys()).sort((a, b) => new Date(a) - new Date(b)).forEach(date => {
-    const rowObj = mergedMap.get(date);
-    const row = allHeaders.map(h => (rowObj[h] !== undefined ? rowObj[h] : null));
-    allSheetsData.push(row);
-  });
+  Array.from(mergedMap.keys())
+    .sort((a, b) => new Date(a) - new Date(b))
+    .forEach(date => {
+      const rowObj = mergedMap.get(date);
+      const row = allHeaders.map(h => (rowObj[h] !== undefined ? rowObj[h] : null));
+      allSheetsData.push(row);
+    });
 
   const mergedWs = XLSX.utils.aoa_to_sheet(allSheetsData);
-  XLSX.utils.book_append_sheet(newWb, mergedWs, window != 30 ? `RSI ${window}D` : `RSI 1M`);
+  XLSX.utils.book_append_sheet(
+    newWb,
+    mergedWs,
+    window !== 30 ? `RSI ${window}D` : `RSI 1M`
+  );
 
   XLSX.writeFile(newWb, outputFile);
   console.log(`✅ ${window}D RSI calculation complete. Saved as: ${outputFile}`);
