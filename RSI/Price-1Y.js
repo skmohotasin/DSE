@@ -7,7 +7,7 @@ const { uploadExcelToGoogleSheets } = require('./googleSheetsRSI1Y');
 function generateLast365Days() {
     const dates = [];
     const today = new Date();
-    for (let i = 361; i >= 0; i--) {
+    for (let i = 359; i >= 0; i--) {
         const d = new Date(today);
         d.setDate(today.getDate() - i);
         const day = String(d.getDate()).padStart(2, '0');
@@ -100,7 +100,7 @@ async function fetchRSIData(code) {
 
             if (oldRow[c] !== undefined) {
                 newRow.push(oldRow[c]);
-            } else if (i > dates.length - 361) {
+            } else if (i > dates.length - 360) {
                 newRow.push(null);
             } else {
                 newRow.push(oldRow[c] ?? null);
@@ -125,7 +125,7 @@ async function fetchRSIData(code) {
                 datePriceMap[formatted] = price;
             });
 
-            for (let i = dates.length - 361; i < dates.length; i++) {
+            for (let i = dates.length - 360; i < dates.length; i++) {
                 if (datePriceMap[dates[i]] !== undefined) {
                     const colIndex = mergedData[0].indexOf(code);
                     if (colIndex !== -1) mergedData[i+1][colIndex] = datePriceMap[dates[i]];
