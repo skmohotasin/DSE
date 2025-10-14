@@ -77,8 +77,38 @@ async function fetchRSIData(code) {
     const progressBar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
     progressBar.start(codes.length, 0);
 
-    const mergedData = [['Date', ...codes]];
-    for (let d of dates) mergedData.push([d, ...Array(codes.length).fill(null)]);
+    let existingData = [];
+    try {
+        const wbOld = XLSX.readFile('./Price_1Y_temp.xlsx');
+        const wsOld = wbOld.Sheets[wbOld.SheetNames[0]];
+        existingData = XLSX.utils.sheet_to_json(wsOld, { header: 1 });
+    } catch (e) {
+        console.log('No previous file found, creating new...');
+    }
+
+    const allCodes = existingData[0] ? existingData[0].slice(1) : codes;
+    const mergedCodes = [...new Set([...allCodes, ...codes])];
+    const mergedData = [['Date', ...mergedCodes]];
+
+    for (let i = 1; i <= dates.length; i++) {
+        const oldRow = existingData[i] || [];
+        const newRow = [dates[i-1]];
+
+        for (let c = 1; c <= mergedCodes.length; c++) {
+            const code = mergedCodes[c-1];
+            const idxOld = oldRow ? oldRow.indexOf(code) : -1;
+
+            if (oldRow[c] !== undefined) {
+                newRow.push(oldRow[c]);
+            } else if (i > dates.length - 361) {
+                newRow.push(null);
+            } else {
+                newRow.push(oldRow[c] ?? null);
+            }
+        }
+
+        mergedData.push(newRow);
+    }
 
     for (let c = 0; c < codes.length; c++) {
         const code = codes[c];
@@ -95,10 +125,11 @@ async function fetchRSIData(code) {
                 datePriceMap[formatted] = price;
             });
 
-            let lastValue = null;
-            for (let i = 0; i < dates.length; i++) {
-                if (datePriceMap[dates[i]] !== undefined) lastValue = datePriceMap[dates[i]];
-                mergedData[i + 1][c + 1] = lastValue !== null ? lastValue : '';
+            for (let i = dates.length - 361; i < dates.length; i++) {
+                if (datePriceMap[dates[i]] !== undefined) {
+                    const colIndex = mergedData[0].indexOf(code);
+                    if (colIndex !== -1) mergedData[i+1][colIndex] = datePriceMap[dates[i]];
+                }
             }
         }
 
@@ -112,6 +143,7 @@ async function fetchRSIData(code) {
     XLSX.utils.book_append_sheet(wb, ws, 'Price 1Y');
     XLSX.writeFile(wb, './Price_1Y_temp.xlsx');
 
-    console.log('✅ Temporary Excel file saved: Price_1Y_temp.xlsx (merged all codes)');
+    console.log('✅ Price 1Y updated and saved: Price_1Y_temp.xlsx');
     await uploadExcelToGoogleSheets('./Price_1Y_temp.xlsx', '1FxV4HYgoV7qYXjw6eEqF4Ax4tjHQqVJ9G-fwKLxaHxI');
+    console.log('✅ Uploaded to Google Sheets');
 })();

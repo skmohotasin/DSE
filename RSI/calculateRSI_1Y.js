@@ -72,7 +72,6 @@ function processRSIExcel(inputFile, outputFile) {
     progressBar.stop();
   });
 
-  // SORT HEADERS A-Z while keeping "Date" first
   const allHeaders = ["Date", ...Array.from(allHeadersSet).sort((a, b) => a.localeCompare(b))];
 
   const allSheetsData = [allHeaders];
