@@ -22,16 +22,22 @@ function isEmpty(value) {
 
 async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {}) {
   try {
-    const auth = new GoogleAuth({
-      keyFile: 'credentials.json',
-      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-    });
+    let auth;
+
+    if (process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+      auth = new GoogleAuth({ scopes: ['https://www.googleapis.com/auth/spreadsheets'] });
+    } else {
+      auth = new GoogleAuth({
+        keyFile: 'credentials.json',
+        scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+      });
+    }
 
     const client = await auth.getClient();
     const sheets = google.sheets({ version: 'v4', auth: client });
     const SPREADSHEET_ID = '1db29opTkQO4s9mwX9LZb_qJHXDzHgp2F4dDzxM58puA';
     const sheetName = `Category ${group}`;
-    const fullHeaders = ['Date', 'Trading Code ', 'YCP (Yesterdays closing price)', 'LTP (Last trading price)', 'CP (Closing Price)', 'Low', 'High', 'Change', 'Volume', 'Company Name' , 'Type', 'Lowest (yearly)', 'Highest (yearly)', 'Range (yearly)' , 'NAV', 'EPS', 'Dividend', 'Last AGM', "Last 1Y Gain"];
+    const fullHeaders = ['Date', 'Trading Code ', 'YCP (Yesterdays closing price)', 'LTP (Last trading price)', 'CP (Closing Price)', 'Low', 'High', 'Change', 'Volume', 'Company Name', 'Type', 'Lowest (yearly)', 'Highest (yearly)', 'Range (yearly)', 'NAV', 'EPS', 'Dividend', 'Last AGM', "Last 1Y Gain"];
 
     await ensureSheetExists(sheets, SPREADSHEET_ID, sheetName);
 

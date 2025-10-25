@@ -21,11 +21,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Set up Google credentials
+      - name: Decode Google credentials
         run: |
-          echo ${{ secrets.GOOGLE_CREDENTIALS }} | base64 --decode > credentials.json
+          echo "${{ secrets.GOOGLE_CREDENTIALS }}" | base64 --decode > credentials.json
 
       - name: Run DailyAll
         run: npm run DailyAll
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: credentials.json
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/credentials.json
