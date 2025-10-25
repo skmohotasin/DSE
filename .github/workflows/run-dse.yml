@@ -25,6 +25,7 @@ jobs:
         run: |
           echo "${{ secrets.GOOGLE_CREDENTIALS }}" | base64 --decode > credentials.json
 
+          
       - name: Run DailyAll
         run: npm run DailyAll
         env:

@@ -22,16 +22,10 @@ function isEmpty(value) {
 
 async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {}) {
   try {
-    let auth;
-
-    if (process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-      auth = new GoogleAuth({ scopes: ['https://www.googleapis.com/auth/spreadsheets'] });
-    } else {
-      auth = new GoogleAuth({
-        keyFile: 'credentials.json',
-        scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-      });
-    }
+    const auth = new GoogleAuth({
+      keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS || 'credentials.json',
+      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+    });
 
     const client = await auth.getClient();
     const sheets = google.sheets({ version: 'v4', auth: client });
