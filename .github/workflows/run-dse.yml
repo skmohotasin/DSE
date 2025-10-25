@@ -27,3 +27,5 @@ jobs:
 
       - name: Run DailyAll
         run: npm run DailyAll
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: credentials.json

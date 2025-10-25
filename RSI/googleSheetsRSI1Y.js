@@ -29,7 +29,9 @@ async function uploadExcelToGoogleSheets(filePath, spreadsheetId) {
     keyFile: 'credentials.json',
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
-  const sheets = google.sheets({ version: 'v4', auth: await auth.getClient() });
+
+  const client = await auth.getClient();
+  const sheets = google.sheets({ version: 'v4', auth: client });
 
   for (const sheetName of workbook.SheetNames) {
     const data = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { header: 1 });
