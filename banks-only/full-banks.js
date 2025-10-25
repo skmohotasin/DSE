@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const cliProgress = require('cli-progress');
-const { saveAndUploadBoth } = require('./googleSheetsBanks');
+const { uploadToGoogleSheets } = require('./googleSheetsBanks');
 
 async function scrapeCompanyDetails(symbol) {
   try {
@@ -194,7 +194,7 @@ async function scrapeCategory() {
       return;
     }
 
-    await saveAndUploadBoth(stocks, { isDaily: false });
+    await uploadToGoogleSheets(stocks, { isDaily: false });
 
     console.log(`✅ Updated Category Bank with ${stocks.length} records`);
   } catch (error) {
