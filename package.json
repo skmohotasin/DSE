@@ -7,12 +7,12 @@
     "clear": "cls",
     "test": "echo \"Error: no test specified\" && exit 1",
     "DailyBank": "node ./banks-only/daily-banks.js Bank",
-    "FullBank": "node ./banks-only/full-banks.js Bank",
     "DailyCatA": "node ./all-data/daily.js A",
     "DailyCatB": "node ./all-data/daily.js B",
+    "DailyAll": "run-p DailyCatA DailyCatB DailyBank",
     "FullCatA": "node ./all-data/full.js A",
     "FullCatB": "node ./all-data/full.js B",
-    "DailyAll": "run-p DailyCatA DailyCatB DailyBank",
+    "FullBank": "node ./banks-only/full-banks.js Bank",
     "FullAll": "run-p FullCatA FullCatB FullBank",
     "all": "run-p DailyAll FullAll",
     "FullRSI": "node ./RSI/Price-1Y.js",
@@ -20,7 +20,7 @@
     "CalRSIM": "node ./RSI/calculateRSI_1M.js",
     "CalRSIC": "node ./RSI/calculateRSI_1C.js",
     "CalRSIC14": "node ./RSI/calculateRSI_1C.js 14",
-    "RSI": "npm run FullRSI && run-p CalRSIY CalRSIM CalRSIC14"
+    "RSI": "run FullRSI && run-p CalRSIY CalRSIM CalRSIC14"
   },
   "repository": {
     "type": "git",
