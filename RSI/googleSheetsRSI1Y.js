@@ -26,7 +26,7 @@ async function ensureSheetExists(sheets, spreadsheetId, tabName) {
 async function uploadExcelToGoogleSheets(filePath, spreadsheetId) {
   const workbook = XLSX.readFile(filePath);
   const auth = new GoogleAuth({
-    keyFile: './credentials.json',
+    keyFile: 'credentials.json',
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
   const sheets = google.sheets({ version: 'v4', auth: await auth.getClient() });

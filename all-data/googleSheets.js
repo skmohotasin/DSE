@@ -23,7 +23,7 @@ function isEmpty(value) {
 async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {}) {
   try {
     const auth = new GoogleAuth({
-      keyFile: './credentials.json',
+      keyFile: 'credentials.json',
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
 
