@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clear": "cls",
     "test": "echo \"Error: no test specified\" && exit 1",
     "DailyBank": "node ./banks-only/daily-banks.js Bank",
     "FullBank": "node ./banks-only/full-banks.js Bank",
