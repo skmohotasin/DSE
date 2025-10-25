@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const cliProgress = require('cli-progress');
-const { saveAndUploadBoth } = require('./googleSheets');
+const { uploadToGoogleSheets } = require('./googleSheets');
 
 async function scrapeCompanyDetails(symbol) {
   try {
@@ -178,7 +178,7 @@ async function scrapeCategory(group) {
       return;
     }
 
-    await saveAndUploadBoth(stocks, {
+    await uploadToGoogleSheets(stocks, {
       group,
       isDaily: false
     });
