@@ -155,13 +155,13 @@ async function scrapeCategory(group) {
         Volume: $(cols[10]).text().trim(),
         CompanyName: extra.CompanyName,
         Sector: extra.Sector,
-        Lowest: extra.Range52Wk?.lowest || '',
-        Highest: extra.Range52Wk?.highest || '',
-        Range52Wk: extra.Range52Wk?.range || '',
-        NAV: extra.NAV || '',
-        EPS: extra.EPS || '',
-        Dividend: extra.Dividend || '',
-        LastAGM: extra.LastAGM || '',
+        Lowest: extra.Range52Wk?.lowest,
+        Highest: extra.Range52Wk?.highest,
+        Range52Wk: extra.Range52Wk?.range,
+        NAV: extra.NAV,
+        EPS: extra.EPS,
+        Dividend: extra.Dividend,
+        LastAGM: extra.LastAGM,
         Last1YGain: Last1YGain
       });
 

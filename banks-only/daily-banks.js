@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const cliProgress = require('cli-progress');
-const { uploadToGoogleSheets } = require('./googleSheetsBanks');
+const { saveAndUploadBoth } = require('./googleSheetsBanks');
 
 async function scrapeDailyPrices() {
   try {
@@ -58,7 +58,7 @@ async function scrapeDailyPrices() {
       return;
     }
 
-    await uploadToGoogleSheets(stocks, {isDaily: true});
+    await saveAndUploadBoth(stocks, {isDaily: true});
 
     console.log(`✅ Added ${stocks.length} daily records to Bank`);
   } catch (error) {

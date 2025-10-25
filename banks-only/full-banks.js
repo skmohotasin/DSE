@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const cliProgress = require('cli-progress');
-const { uploadToGoogleSheets } = require('./googleSheetsBanks');
+const { saveAndUploadBoth } = require('./googleSheetsBanks');
 
 async function scrapeCompanyDetails(symbol) {
   try {
@@ -155,6 +155,9 @@ async function scrapeCategory() {
       const symbol = $(cols[1]).text().trim();
 
       const extra = await scrapeCompanyDetails(symbol);
+      const ltp = parseFloat($(cols[2]).text().trim()) || 0;
+      const lowest52 = extra.Range52Wk?.lowest || 1;
+      const Last1YGain = ((ltp - lowest52) / lowest52 * 100).toFixed(2) + '%';
 
       stocks.push({
         Date: new Date().toISOString().slice(0, 10),
@@ -175,7 +178,8 @@ async function scrapeCategory() {
         NAV: extra.NAV,
         EPS: extra.EPS,
         Dividend: extra.Dividend,
-        LastAGM: extra.LastAGM
+        LastAGM: extra.LastAGM,
+        Last1YGain: Last1YGain
       });
 
       progressBar.update(i + 1);
@@ -190,7 +194,7 @@ async function scrapeCategory() {
       return;
     }
 
-    await uploadToGoogleSheets(stocks, { isDaily: false });
+    await saveAndUploadBoth(stocks, { isDaily: false });
 
     console.log(`✅ Updated Category Bank with ${stocks.length} records`);
   } catch (error) {
