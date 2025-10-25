@@ -1,5 +1,6 @@
 const { google } = require('googleapis');
 const { GoogleAuth } = require('google-auth-library');
+const XLSX = require('xlsx');
 
 async function ensureSheetExists(sheets, spreadsheetId, sheetName) {
   try {
@@ -16,11 +17,38 @@ async function ensureSheetExists(sheets, spreadsheetId, sheetName) {
   }
 }
 
-function isEmpty(value) {
-  return value === undefined || value === null || value === '';
+function saveToExcel(data, sheetName, filePath, isDaily = false) {
+  if (!Array.isArray(data) || data.length === 0) {
+    console.warn(`⚠️ No data to save for ${sheetName}`);
+    return;
+  }
+
+  const fullHeaders = [
+    'Date', 'Symbol', 'YCP', 'LTP', 'CP', 'Low', 'High', 'Change', 'Volume',
+    'CompanyName', 'Sector', 'Lowest', 'Highest', 'Range52Wk', 'NAV', 'EPS', 'Dividend', 'LastAGM'
+  ];
+  const dailyHeaders = fullHeaders.slice(0, 9);
+  const headers = isDaily ? dailyHeaders : fullHeaders;
+
+  const worksheetData = [
+    headers,
+    ...data.map(item => headers.map(h => item[h] !== undefined ? item[h] : ''))
+  ];
+
+  const wb = XLSX.utils.book_new();
+  const ws = XLSX.utils.aoa_to_sheet(worksheetData);
+  XLSX.utils.book_append_sheet(wb, ws, sheetName);
+  XLSX.writeFile(wb, filePath);
+
+  console.log(`✅ Saved Excel file: ${filePath} (${data.length} records)`);
 }
 
 async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {}) {
+  if (!Array.isArray(data) || data.length === 0) {
+    console.warn(`⚠️ No data to upload for Category ${group}`);
+    return;
+  }
+
   try {
     const auth = new GoogleAuth({
       keyFile: './credentials.json',
@@ -29,97 +57,29 @@ async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {})
 
     const sheets = google.sheets({ version: 'v4', auth: await auth.getClient() });
     const SPREADSHEET_ID = '1db29opTkQO4s9mwX9LZb_qJHXDzHgp2F4dDzxM58puA';
-    const sheetName = `Category ${group}`;
-    const fullHeaders = ['Date', 'Trading Code ', 'YCP (Yesterdays closing price)', 'LTP (Last trading price)', 'CP (Closing Price)', 'Low', 'High', 'Change', 'Volume', 'Company Name' , 'Type', 'Lowest (yearly)', 'Highest (yearly)', 'Range (yearly)' , 'NAV', 'EPS', 'Dividend', 'Last AGM'];
+    const sheetName = isDaily ? `Category ${group} Daily` : `Category ${group} Full`;
 
     await ensureSheetExists(sheets, SPREADSHEET_ID, sheetName);
+
+    const headers = isDaily
+      ? ['Date', 'Symbol', 'YCP', 'LTP', 'CP', 'Low', 'High', 'Change', 'Volume']
+      : [
+          'Date', 'Symbol', 'YCP', 'LTP', 'CP', 'Low', 'High', 'Change', 'Volume',
+          'CompanyName', 'Sector', 'Lowest', 'Highest', 'Range52Wk', 'NAV', 'EPS', 'Dividend', 'LastAGM', "Last1YGain"
+        ];
 
     await sheets.spreadsheets.values.update({
       spreadsheetId: SPREADSHEET_ID,
       range: `${sheetName}!A1`,
       valueInputOption: 'RAW',
-      resource: { values: [fullHeaders] }
+      resource: { values: [headers] }
     });
 
-    const existingRes = await sheets.spreadsheets.values.get({
-      spreadsheetId: SPREADSHEET_ID,
-      range: `${sheetName}!A2:J`,
-    });
-    const existingRows = existingRes.data.values || [];
-
-    const mergedRows = data.map((item, i) => {
-      const existingRow = existingRows[i] || [];
-
-      const first9 = isDaily
-        ? [
-          item.Date,
-          item.Symbol,
-          item.YCP,
-          item.LTP,
-          item.CP,
-          item.Low,
-          item.High,
-          item.Change,
-          item.Volume
-        ]
-        : [
-          item.Date,
-          item.Symbol,
-          item.YCP,
-          item.LTP,
-          item.CP,
-          item.Low,
-          item.High,
-          item.Change,
-          item.Volume,
-          item.CompanyName,
-          item.Sector,
-          item.Lowest,
-          item.Highest,
-          item.Range52Wk,
-          item.NAV,
-          item.EPS,
-          item.Dividend,
-          item.LastAGM
-        ];
-
-      function mergeCell(newVal, oldVal) {
-        return isEmpty(newVal) ? oldVal || '' : newVal;
-      }
-
-      if (isDaily) {
-        const last8 = existingRow.slice(9, 19);
-        const mergedFirst9 = first9.map((val, idx) => mergeCell(val, existingRow[idx]));
-        const mergedlast8 = last8.map(val => val || '');
-        return [...mergedFirst9, ...mergedlast8];
-      } else {
-        const fullData = [
-          item.Date,
-          item.Symbol,
-          item.YCP,
-          item.LTP,
-          item.CP,
-          item.Low,
-          item.High,
-          item.Change,
-          item.Volume,
-          item.CompanyName,
-          item.Sector,
-          item.Lowest,
-          item.Highest,
-          item.Range52Wk,
-          item.NAV,
-          item.EPS,
-          item.Dividend,
-          item.LastAGM
-        ];
-        return fullData.map((val, idx) => mergeCell(val, existingRow[idx]));
-      }
-    });
+    const mergedRows = data.map(item => headers.map(h => item[h] !== undefined ? item[h] : ''));
 
     await sheets.spreadsheets.values.clear({
       spreadsheetId: SPREADSHEET_ID,
-      range: `${sheetName}!A2:J`,
+      range: `${sheetName}!A2:Z`,
     });
 
     await sheets.spreadsheets.values.update({
@@ -129,11 +89,23 @@ async function uploadToGoogleSheets(data, { group = 'A', isDaily = false } = {})
       resource: { values: mergedRows }
     });
 
-    console.log(`✅ Updated ${sheetName} with ${data.length} records`);
+    console.log(`✅ Uploaded ${data.length} records to Google Sheets: ${sheetName}`);
   } catch (error) {
     console.error('Sheets API Error:', error.message);
     throw error;
   }
 }
 
-module.exports = { uploadToGoogleSheets };
+async function saveAndUploadBoth(data, { group = 'A', isDaily = false } = {}) {
+  if (!Array.isArray(data) || data.length === 0) {
+    console.warn(`⚠️ No data for Category ${group}, skipping Excel and Google upload`);
+    return;
+  }
+
+  const fileName = `Category_${group}_${isDaily ? 'Daily' : 'Full'}.xlsx`;
+
+  saveToExcel(data, `Category ${group}`, fileName, isDaily);
+  await uploadToGoogleSheets(data, { group, isDaily });
+}
+
+module.exports = { saveToExcel, uploadToGoogleSheets, saveAndUploadBoth };

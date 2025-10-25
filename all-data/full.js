@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const cliProgress = require('cli-progress');
-const { uploadToGoogleSheets } = require('./googleSheets');
+const { saveAndUploadBoth } = require('./googleSheets');
 
 async function scrapeCompanyDetails(symbol) {
   try {
@@ -139,6 +139,9 @@ async function scrapeCategory(group) {
       const symbol = $(cols[1]).text().trim();
 
       const extra = await scrapeCompanyDetails(symbol);
+      const ltp = parseFloat($(cols[2]).text().trim()) || 0;
+      const lowest52 = extra.Range52Wk?.lowest || 1;
+      const Last1YGain = ((ltp - lowest52) / lowest52 * 100).toFixed(2) + '%';
 
       stocks.push({
         Date: new Date().toISOString().slice(0, 10),
@@ -152,14 +155,16 @@ async function scrapeCategory(group) {
         Volume: $(cols[10]).text().trim(),
         CompanyName: extra.CompanyName,
         Sector: extra.Sector,
-        Lowest: extra.Range52Wk.lowest,
-        Highest: extra.Range52Wk.highest,
-        Range52Wk: extra.Range52Wk.range,
-        NAV: extra.NAV,
-        EPS: extra.EPS,
-        Dividend: extra.Dividend,
-        LastAGM: extra.LastAGM
+        Lowest: extra.Range52Wk?.lowest || '',
+        Highest: extra.Range52Wk?.highest || '',
+        Range52Wk: extra.Range52Wk?.range || '',
+        NAV: extra.NAV || '',
+        EPS: extra.EPS || '',
+        Dividend: extra.Dividend || '',
+        LastAGM: extra.LastAGM || '',
+        Last1YGain: Last1YGain
       });
+
 
       progressBar.update(i + 1);
     }
@@ -173,7 +178,7 @@ async function scrapeCategory(group) {
       return;
     }
 
-    await uploadToGoogleSheets(stocks, {
+    await saveAndUploadBoth(stocks, {
       group,
       isDaily: false
     });
