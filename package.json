@@ -20,7 +20,7 @@
     "CalRSIM": "node ./RSI/calculateRSI_1M.js",
     "CalRSIC": "node ./RSI/calculateRSI_1C.js",
     "CalRSIC14": "node ./RSI/calculateRSI_1C.js 14",
-    "DailyAnalysis": "node ./analysis/ollama-dse.js",
+    "DailyAnalysis": "node ./analysis/llama-dse.js",
     "RSI": "run FullRSI && run-p CalRSIY CalRSIM CalRSIC14"
   },
   "repository": {
@@ -44,6 +44,7 @@
     "google-auth-library": "^10.2.0",
     "google-spreadsheet": "^5.0.2",
     "googleapis": "^154.0.0",
+    "llama-node": "^0.1.6",
     "node-fetch": "^3.3.2",
     "xlsx": "^0.18.5"
   },

@@ -1,22 +1,23 @@
-const { google } = require('googleapis');
-const { GoogleAuth } = require('google-auth-library');
-const ExcelJS = require('exceljs');
-const path = require('path');
-const fs = require('fs');
-const fetch = global.fetch || require('node-fetch');
-const cliProgress = require('cli-progress');
+// analysis/llama-dse.js
+import { Llama } from 'llama-node';
+import ExcelJS from 'exceljs';
+import { google } from 'googleapis';
+import { GoogleAuth } from 'google-auth-library';
+import path from 'path';
+import fs from 'fs';
 
-const CREDENTIALS_FILE = path.resolve(__dirname, '..', 'credentials.json');
+const __dirname = path.resolve(); // for module path
+
+// CONFIG
+const CREDENTIALS_FILE = path.join(__dirname, '..', 'credentials.json');
 const SPREADSHEET_ID = '1db29opTkQO4s9mwX9LZb_qJHXDzHgp2F4dDzxM58puA';
-const OLLAMA_MODEL = 'qwen2.5:7b';
+const MODEL_PATH = path.join(__dirname, 'models', 'llama-2-7b'); // path to your downloaded LLaMA 2 7B
 const ROWS_TO_ANALYZE = 10;
 const OUTPUT_FILE = path.join(__dirname, 'analysis.xlsx');
 
-// === 1. Read Google Sheet ===
+// 1. Fetch sheet data
 async function getSheetRows() {
-  if (!fs.existsSync(CREDENTIALS_FILE)) {
-    throw new Error(`Credentials file not found at ${CREDENTIALS_FILE}`);
-  }
+  if (!fs.existsSync(CREDENTIALS_FILE)) throw new Error(`Credentials file not found: ${CREDENTIALS_FILE}`);
 
   const auth = new GoogleAuth({
     keyFile: CREDENTIALS_FILE,
@@ -40,12 +41,12 @@ async function getSheetRows() {
   const headers = rows.shift();
   return rows.map(row => {
     const obj = {};
-    headers.forEach((h, i) => (obj[h] = row[i] || ''));
+    headers.forEach((h, i) => obj[h] = row[i] || '');
     return obj;
   });
 }
 
-// === 2. Build prompt per stock ===
+// 2. Build prompt
 function buildPrompt(stockRows) {
   const lastRows = stockRows
     .slice(-ROWS_TO_ANALYZE)
@@ -54,53 +55,40 @@ function buildPrompt(stockRows) {
 
   return `You are a professional DSE stock analyst.
 Analyze the following recent stock data.
-Give concise analysis including trend, momentum, and any warning signals.
+Give concise analysis including trend, momentum, and any warning signals:
 
 ${lastRows}`;
 }
 
-// === 3. Call Ollama ===
-async function analyzeWithOllama(prompt) {
-  try {
-    const res = await fetch('http://localhost:11434/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: OLLAMA_MODEL,
-        messages: [
-          { role: 'system', content: 'You are a stock market analyst.' },
-          { role: 'user', content: prompt },
-        ],
-      }),
-    });
+// 3. Analyze with LLaMA
+async function analyzeWithLlama(prompt) {
+  const llm = new Llama({
+    model: MODEL_PATH,
+    n_threads: 8,   // adjust threads if needed
+    n_gpu_layers: 20, // approx for 12GB GPU
+  });
 
-    const data = await res.json();
-    if (!data.choices || !data.choices[0] || !data.choices[0].message)
-      return 'No analysis returned';
-    return data.choices[0].message.content;
-  } catch (err) {
-    console.error('Ollama API error:', err.message);
-    return 'Error fetching analysis';
-  }
+  const response = await llm.prompt(prompt, {
+    max_tokens: 500,
+  });
+
+  return response.text || 'No analysis returned';
 }
 
-// === 4. Save Excel ===
+// 4. Save to Excel
 async function saveAnalysisToExcel(results) {
   const workbook = new ExcelJS.Workbook();
   const sheet = workbook.addWorksheet('Analysis');
-
   sheet.columns = [
     { header: 'Symbol', key: 'Symbol', width: 15 },
     { header: 'Analysis', key: 'Analysis', width: 100 },
   ];
-
   results.forEach(r => sheet.addRow({ Symbol: r.Symbol, Analysis: r.Analysis }));
-
   await workbook.xlsx.writeFile(OUTPUT_FILE);
   console.log(`Saved ${OUTPUT_FILE} ✅`);
 }
 
-// === MAIN ===
+// MAIN
 (async () => {
   try {
     const sheetData = await getSheetRows();
@@ -109,25 +97,14 @@ async function saveAnalysisToExcel(results) {
     const symbols = [...new Set(sheetData.map(r => r.Symbol))];
     const results = [];
 
-    // Initialize progress bar
-    const progressBar = new cliProgress.SingleBar({
-      format: 'Analyzing [{bar}] {percentage}% | {value}/{total} stocks',
-      barCompleteChar: '#',
-      barIncompleteChar: '-',
-      hideCursor: true,
-    });
-    progressBar.start(symbols.length, 0);
-
-    for (let i = 0; i < symbols.length; i++) {
-      const sym = symbols[i];
+    for (const sym of symbols) {
       const stockRows = sheetData.filter(r => r.Symbol === sym);
       const prompt = buildPrompt(stockRows);
-      const analysis = await analyzeWithOllama(prompt);
+      const analysis = await analyzeWithLlama(prompt);
+      console.log(`Analysis for ${sym}:\n${analysis}\n`);
       results.push({ Symbol: sym, Analysis: analysis });
-      progressBar.update(i + 1);
     }
 
-    progressBar.stop();
     await saveAnalysisToExcel(results);
   } catch (err) {
     console.error('Fatal error:', err.message);
