@@ -7,10 +7,8 @@ if (!script) {
 }
 
 const scriptArgs = process.argv.slice(3);
-const nodeArgs =
-  process.platform === 'win32'
-    ? ['--use-system-ca', script, ...scriptArgs]
-    : [script, ...scriptArgs];
+// Pass on the command line (not NODE_OPTIONS) — required for dsebd.org on Windows and GitHub Actions.
+const nodeArgs = ['--use-system-ca', script, ...scriptArgs];
 
 const result = spawnSync(process.execPath, nodeArgs, {
   stdio: 'inherit',
