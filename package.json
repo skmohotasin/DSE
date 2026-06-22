@@ -20,7 +20,7 @@
     "CalRSIM": "node ./RSI/calculateRSI_1M.js",
     "CalRSIC": "node ./RSI/calculateRSI_1C.js",
     "CalRSIC14": "node ./RSI/calculateRSI_1C.js 14",
-    "RSI": "run FullRSI && run-p CalRSIY CalRSIM CalRSIC14"
+    "RSI": "run-s FullRSI && run-p CalRSIY CalRSIM CalRSIC14"
   },
   "repository": {
     "type": "git",
