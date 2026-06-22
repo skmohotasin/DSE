@@ -6,11 +6,7 @@ if (!script) {
   process.exit(1);
 }
 
-const scriptArgs = process.argv.slice(3);
-// Pass on the command line (not NODE_OPTIONS) — required for dsebd.org on Windows and GitHub Actions.
-const nodeArgs = ['--use-system-ca', script, ...scriptArgs];
-
-const result = spawnSync(process.execPath, nodeArgs, {
+const result = spawnSync(process.execPath, [script, ...process.argv.slice(3)], {
   stdio: 'inherit',
   env: process.env,
 });

@@ -1,18 +1,11 @@
-const axios = require('axios');
+const http = require('../lib/http');
 const cheerio = require('cheerio');
 const cliProgress = require('cli-progress');
 const { uploadToGoogleSheets } = require('./googleSheetsBanks');
 
 async function scrapeDailyPrices() {
   try {
-    const { data } = await axios.get(
-      `https://www.dsebd.org/ltp_industry.php?area=11`,
-      {
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
-        }
-      }
-    );
+    const { data } = await http.get(`https://www.dsebd.org/ltp_industry.php?area=11`);
 
     const $ = cheerio.load(data);
     const stocks = [];

@@ -1,17 +1,12 @@
-const axios = require('axios');
+const http = require('../lib/http');
 const cheerio = require('cheerio');
 const cliProgress = require('cli-progress');
 const { uploadToGoogleSheets } = require('./googleSheets');
 
 async function scrapeDailyPrices(group) {
   try {
-    const { data } = await axios.get(
-      `https://dsebd.org/latest_share_price_scroll_group.php?group=${group}`,
-      {
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
-        }
-      }
+    const { data } = await http.get(
+      `https://dsebd.org/latest_share_price_scroll_group.php?group=${group}`
     );
 
     const $ = cheerio.load(data);

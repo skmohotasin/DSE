@@ -1,15 +1,11 @@
-const axios = require('axios');
+const http = require('../lib/http');
 const cheerio = require('cheerio');
 const cliProgress = require('cli-progress');
 const { uploadToGoogleSheets } = require('./googleSheetsBanks');
 
 async function scrapeCompanyDetails(symbol) {
   try {
-    const { data } = await axios.get(`https://dsebd.org/displayCompany.php?name=${symbol}`, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
-      }
-    });
+    const { data } = await http.get(`https://dsebd.org/displayCompany.php?name=${symbol}`);
 
     const $ = cheerio.load(data);
 
@@ -111,14 +107,7 @@ async function scrapeCompanyDetails(symbol) {
 
 async function scrapeCategory() {
   try {
-    const { data } = await axios.get(
-      `https://www.dsebd.org/ltp_industry.php?area=11`,
-      {
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
-        }
-      }
-    );
+    const { data } = await http.get(`https://www.dsebd.org/ltp_industry.php?area=11`);
 
     const $ = cheerio.load(data);
     const rows = $('.table.table-bordered tr');

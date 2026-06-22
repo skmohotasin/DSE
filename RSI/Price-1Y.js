@@ -1,4 +1,4 @@
-const axios = require('axios');
+const http = require('../lib/http');
 const cheerio = require('cheerio');
 const XLSX = require('xlsx');
 const cliProgress = require('cli-progress');
@@ -19,9 +19,7 @@ function generateLast365Days() {
 }
 
 async function fetchTradingCodesFromURL(url, columnIndex = 1) {
-    const { data } = await axios.get(url, {
-        headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
-    });
+    const { data } = await http.get(url);
     const $ = cheerio.load(data);
     const codes = [];
     $('.table.table-bordered tr').slice(1).each((_, row) => {
@@ -51,9 +49,7 @@ async function getAllTradingCodes() {
 async function fetchRSIData(code) {
     try {
         const url = `https://www.dsebd.org/php_graph/monthly_graph.php?inst=${code}&duration=12&type=price`;
-        const { data } = await axios.get(url, {
-            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
-        });
+        const { data } = await http.get(url);
 
         const regex = /"Date,Price\\n(.+?)"\s*,/s;
         const match = data.match(regex);
