@@ -1,24 +1,35 @@
 const http = require('../lib/http');
-const cheerio = require('cheerio');
 const cliProgress = require('cli-progress');
 const { uploadToGoogleSheets } = require('./googleSheets');
+const companies = require('../data/companies.json');
+
+const PRICES_URL = 'https://www.dsebd.org/api/live/prices';
+
+function cell(value) {
+  if (value === null || value === undefined) return '';
+  return String(value);
+}
+
+function priceChange(ltp, ycp, percent) {
+  if (percent === null || percent === undefined || !ltp) return '';
+  return String(Math.round((ltp - ycp) * 100) / 100);
+}
 
 async function scrapeDailyPrices(group) {
   try {
-    const { data } = await http.get(
-      `https://dsebd.org/latest_share_price_scroll_group.php?group=${group}`
+    const codes = new Set(
+      companies.filter((company) => company.category === group).map((company) => company.tradingCode)
     );
 
-    const $ = cheerio.load(data);
-    const stocks = [];
+    const { data } = await http.get(PRICES_URL);
+    const cols = data.cols;
+    const rows = data.rows || [];
+    const index = Object.fromEntries(cols.map((name, i) => [name, i]));
 
-    const rows = $('.table.table-bordered tr');
-    if (rows.length <= 1) {
-      console.error(`❌ No data rows found for group ${group}`);
+    if (rows.length === 0) {
+      console.error(`No price rows found for group ${group}`);
       return;
     }
-
-    const dataRows = rows.slice(1).toArray();
 
     const progressBar = new cliProgress.SingleBar({
       format: 'Progress |{bar}| {percentage}% || {value}/{total} Stocks',
@@ -26,39 +37,44 @@ async function scrapeDailyPrices(group) {
       barIncompleteChar: '\u2591',
       hideCursor: true
     });
-    progressBar.start(dataRows.length, 0);
+    progressBar.start(rows.length, 0);
 
-    dataRows.forEach((row, index) => {
-      const cols = $(row).find('td');
-      if (cols.length >= 5) {
+    const stocks = [];
+    rows.forEach((row, i) => {
+      const symbol = row[index.code];
+      if (codes.has(symbol)) {
+        const ltp = row[index.ltp];
+        const ycp = row[index.ycp];
         stocks.push({
           Date: new Date().toISOString().slice(0, 10),
-          Symbol: $(cols[1]).text().trim(),
-          YCP: $(cols[6]).text().trim(),
-          LTP: $(cols[2]).text().trim(),
-          CP: $(cols[5]).text().trim(),
-          Low: $(cols[4]).text().trim(),
-          High: $(cols[3]).text().trim(),
-          Change: $(cols[7]).text().trim(),
-          Volume: $(cols[10]).text().trim(),
+          Symbol: symbol,
+          YCP: cell(ycp),
+          LTP: cell(ltp),
+          CP: cell(row[index.close]),
+          Low: cell(row[index.low]),
+          High: cell(row[index.high]),
+          Change: priceChange(ltp, ycp, row[index.percent]),
+          Volume: cell(row[index.volume]),
         });
       }
-      progressBar.update(index + 1);
+      progressBar.update(i + 1);
     });
 
     progressBar.stop();
 
     if (stocks.length === 0) {
-      console.warn(`⚠️ No valid stock data parsed for group ${group}`);
+      console.warn(`No valid stock data parsed for group ${group}`);
       return;
     }
+
+    console.log(`Parsed ${stocks.length} daily records for Category ${group}`);
 
     await uploadToGoogleSheets(stocks, {
       group,
       isDaily: true
     });
 
-    console.log(`✅ Added ${stocks.length} daily records to Category ${group}`);
+    console.log(`Added ${stocks.length} daily records to Category ${group}`);
   } catch (error) {
     console.error(`Daily scrape error for group ${group}:`, error.message);
   }

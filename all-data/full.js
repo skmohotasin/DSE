@@ -1,161 +1,148 @@
 const http = require('../lib/http');
-const cheerio = require('cheerio');
 const cliProgress = require('cli-progress');
 const { uploadToGoogleSheets } = require('./googleSheets');
+const companies = require('../data/companies.json');
+
+const PRICES_URL = 'https://www.dsebd.org/api/live/prices';
+
+function cell(value) {
+  if (value === null || value === undefined || value === '$undefined') return '';
+  return String(value);
+}
+
+function priceChange(ltp, ycp, percent) {
+  if (percent === null || percent === undefined || !ltp) return '';
+  return String(Math.round((ltp - ycp) * 100) / 100);
+}
+
+function formatDividend(history) {
+  if (!Array.isArray(history) || history.length === 0) return '';
+  const latest = [...history].sort((a, b) => b.year - a.year)[0];
+  const parts = [];
+  if (latest.cash) parts.push(`${latest.cash}%C`);
+  if (latest.stock) parts.push(`${latest.stock}%B`);
+  if (latest.rights) parts.push(`${latest.rights}%R`);
+  return parts.join(', ') || '0';
+}
+
+function extractCompany(html) {
+  const marker = '\\"company\\":';
+  const start = html.indexOf(marker);
+  if (start < 0) return null;
+
+  let i = start + marker.length;
+  if (html[i] !== '{') return null;
+
+  let depth = 0;
+  let out = '';
+  let inString = false;
+  for (; i < html.length; i++) {
+    const ch = html[i];
+    out += ch;
+    if (ch === '\\') {
+      out += html[++i] || '';
+      continue;
+    }
+    if (ch === '"') inString = !inString;
+    if (inString) continue;
+    if (ch === '{') depth++;
+    else if (ch === '}') {
+      depth--;
+      if (depth === 0) break;
+    }
+  }
+
+  return JSON.parse(out.replace(/\\"/g, '"').replace(/\\\\/g, '\\'));
+}
 
 async function scrapeCompanyDetails(symbol) {
   try {
-    const { data } = await http.get(`https://dsebd.org/displayCompany.php?name=${symbol}`);
+    const { data } = await http.get(`https://www.dsebd.org/company/${encodeURIComponent(symbol)}`);
+    const company = extractCompany(data);
+    if (!company) return null;
 
-    const $ = cheerio.load(data);
-
-    const companyName = $('#section-to-print h2.BodyHead.topBodyHead i').first().text().trim();
-    const targetTableTwo = $('table#company').eq(2);
-
-    let sector = '';
-
-    targetTableTwo.find('th').each((_, th) => {
-      const text = $(th).text().trim().toLowerCase();
-      if (text.includes('sector')) {
-        sector = $(th).next('td').text().trim();
-      }
-    });
-
-    let rangeLow = '';
-    let rangeHigh = '';
-    const companyTable = $('#company');
-    companyTable.find('th').each((_, el) => {
-      const text = $(el).text().trim().replace(/\s+/g, ' ');
-      if (text === "52 Weeks' Moving Range") {
-        const val = $(el).next('td').text().trim();
-        const match = val.match(/([\d.,]+)\s*-\s*([\d.,]+)/);
-        if (match) {
-          rangeLow = match[1].replace(/,/g, '');
-          rangeHigh = match[2].replace(/,/g, '');
-          range = Number(rangeHigh) - Number(rangeLow);
-        }
-      }
-    });
-
-    let DividendValue = '';
-    let EPSValue = '';
-
-    $('#company tbody tr').each((_, row) => {
-      const cells = $(row).find('td');
-      const yearText = cells.eq(0).text().trim();
-      const is2024 = yearText === '2024' || cells.eq(1).text().trim() === '2024';
-      if (is2024) {
-        DividendValue = cells.eq(7).text().trim();
-        EPSValue = cells.eq(4).text().trim();
-      }
-    });
-
-    let NAVValue = '';
-
-    const targetTable = $('table#company').eq(7);
-    const rows = targetTable.find('tbody tr');
-
-    rows.each((_, row) => {
-      const cells = $(row).find('td');
-      const yearText = cells.eq(0).text().trim();
-      const is2024 = yearText === '2024' || cells.eq(1).text().trim() === '2024';
-      if (is2024) {
-        NAVValue = cells.eq(7).text().trim();
-      }
-    });
-
-
-    let lastAGM = '';
-    $('div.col-sm-6.pull-left').each((_, el) => {
-      if ($(el).text().includes('Last AGM held on:')) {
-        lastAGM = $(el).find('i').text().replace(/\s+/g, ' ').trim();
-      }
-    });
-
+    const rangeLow = company.weekLow52;
+    const rangeHigh = company.weekHigh52;
+    const range = Number(rangeHigh) - Number(rangeLow);
 
     return {
-      CompanyName: companyName,
-      Sector: sector,
-      Range52Wk: { lowest: rangeLow, highest: rangeHigh, range: range },
-      NAV: NAVValue,
-      EPS: EPSValue,
-      Dividend: DividendValue,
-      LastAGM: lastAGM,
+      CompanyName: company.name || '',
+      Range52Wk: {
+        lowest: cell(rangeLow),
+        highest: cell(rangeHigh),
+        range: Number.isFinite(range) ? range : '',
+      },
+      NAV: cell(company.nav),
+      EPS: cell(company.eps),
+      Dividend: formatDividend(company.dividendHistory),
+      LastAGM: cell(company.agmDate),
     };
-
   } catch (err) {
-    console.warn(`⚠️ Could not fetch company details for ${symbol}: ${err.message}`);
+    console.warn(`Could not fetch company details for ${symbol}: ${err.message}`);
     return null;
   }
 }
 
 async function scrapeCategory(group) {
   try {
-    const { data } = await http.get(
-      `https://dsebd.org/latest_share_price_scroll_group.php?group=${group}`
+    const byCode = new Map(
+      companies
+        .filter((company) => company.category === group)
+        .map((company) => [company.tradingCode, company])
     );
 
-    const $ = cheerio.load(data);
-    const rows = $('.table.table-bordered tr');
+    const { data } = await http.get(PRICES_URL);
+    const cols = data.cols;
+    const index = Object.fromEntries(cols.map((name, i) => [name, i]));
+    const priceRows = (data.rows || []).filter((row) => byCode.has(row[index.code]));
 
-    console.log(`Found ${rows.length} rows for group ${group}`);
+    console.log(`Found ${priceRows.length} rows for group ${group}`);
 
-    if (rows.length <= 1) {
-      console.error(`❌ No data rows found for group ${group}`);
+    if (priceRows.length === 0) {
+      console.error(`No data rows found for group ${group}`);
       return;
     }
 
     const stocks = [];
-
-    const dataRows = rows.slice(1).toArray();
-
     const progressBar = new cliProgress.SingleBar({
       format: 'Progress |{bar}| {percentage}% || {value}/{total} Companies',
       barCompleteChar: '\u2588',
       barIncompleteChar: '\u2591',
       hideCursor: true
     });
-    progressBar.start(dataRows.length, 0);
+    progressBar.start(priceRows.length, 0);
 
-    for (let i = 0; i < dataRows.length; i++) {
-      const row = dataRows[i];
-      const cols = $(row).find('td');
-
-      if (cols.length < 11) {
-        console.warn('Skipping row due to insufficient columns');
-        progressBar.increment();
-        continue;
-      }
-
-      const symbol = $(cols[1]).text().trim();
-
+    for (let i = 0; i < priceRows.length; i++) {
+      const row = priceRows[i];
+      const symbol = row[index.code];
+      const saved = byCode.get(symbol);
       const extra = await scrapeCompanyDetails(symbol);
-      const ltp = parseFloat($(cols[2]).text().trim()) || 0;
-      const lowest52 = extra.Range52Wk?.lowest || 1;
+      const ltp = Number(row[index.ltp]) || 0;
+      const ycp = row[index.ycp];
+      const lowest52 = Number(extra?.Range52Wk?.lowest) || 1;
       const Last1YGain = ((ltp - lowest52) / lowest52 * 100).toFixed(2) + '%';
 
       stocks.push({
         Date: new Date().toISOString().slice(0, 10),
         Symbol: symbol,
-        YCP: $(cols[6]).text().trim(),
-        LTP: $(cols[2]).text().trim(),
-        CP: $(cols[5]).text().trim(),
-        Low: $(cols[4]).text().trim(),
-        High: $(cols[3]).text().trim(),
-        Change: $(cols[7]).text().trim(),
-        Volume: $(cols[10]).text().trim(),
-        CompanyName: extra.CompanyName,
-        Sector: extra.Sector,
-        Lowest: extra.Range52Wk?.lowest,
-        Highest: extra.Range52Wk?.highest,
-        Range52Wk: extra.Range52Wk?.range,
-        NAV: extra.NAV,
-        EPS: extra.EPS,
-        Dividend: extra.Dividend,
-        LastAGM: extra.LastAGM,
-        Last1YGain: Last1YGain
+        YCP: cell(ycp),
+        LTP: cell(row[index.ltp]),
+        CP: cell(row[index.close]),
+        Low: cell(row[index.low]),
+        High: cell(row[index.high]),
+        Change: priceChange(row[index.ltp], ycp, row[index.percent]),
+        Volume: cell(row[index.volume]),
+        CompanyName: extra?.CompanyName || '',
+        Sector: saved?.sector || '',
+        Lowest: extra?.Range52Wk?.lowest || '',
+        Highest: extra?.Range52Wk?.highest || '',
+        Range52Wk: extra?.Range52Wk?.range ?? '',
+        NAV: extra?.NAV || '',
+        EPS: extra?.EPS || '',
+        Dividend: extra?.Dividend || '',
+        LastAGM: extra?.LastAGM || '',
+        Last1YGain,
       });
-
 
       progressBar.update(i + 1);
     }
@@ -165,7 +152,7 @@ async function scrapeCategory(group) {
     console.log(`Parsed ${stocks.length} stock entries`);
 
     if (stocks.length === 0) {
-      console.error('❌ No valid stock data parsed. The page structure may have changed.');
+      console.error('No valid stock data parsed. The page structure may have changed.');
       return;
     }
 
@@ -174,15 +161,19 @@ async function scrapeCategory(group) {
       isDaily: false
     });
 
-    console.log(`✅ Updated Category ${group} with ${stocks.length} records`);
+    console.log(`Updated Category ${group} with ${stocks.length} records`);
   } catch (error) {
     console.error(`Category ${group} Error:`, error.message);
   }
 }
 
-const group = process.argv[2]?.toUpperCase() || 'A';
-if (['A', 'B'].includes(group)) {
-  scrapeCategory(group);
-} else {
-  console.log('Usage: node scraper-full.js [A|B]');
+if (require.main === module) {
+  const group = process.argv[2]?.toUpperCase() || 'A';
+  if (['A', 'B'].includes(group)) {
+    scrapeCategory(group);
+  } else {
+    console.log('Usage: node scraper-full.js [A|B]');
+  }
 }
+
+module.exports = { scrapeCompanyDetails };
