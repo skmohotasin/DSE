@@ -30,11 +30,6 @@
     "category": "Z"
   },
   {
-    "tradingCode": "ABBLPBOND",
-    "sector": "CorpBond",
-    "category": "A"
-  },
-  {
     "tradingCode": "ACFL",
     "sector": "Textile",
     "category": "A"
@@ -72,7 +67,7 @@
   {
     "tradingCode": "ADVENT",
     "sector": "PharmaChem",
-    "category": "B"
+    "category": "Z"
   },
   {
     "tradingCode": "AFCAGRO",
@@ -100,11 +95,6 @@
     "category": "A"
   },
   {
-    "tradingCode": "AIBLPBOND",
-    "sector": "CorpBond",
-    "category": "N"
-  },
-  {
     "tradingCode": "AIL",
     "sector": "Textile",
     "category": "Z"
@@ -122,7 +112,7 @@
   {
     "tradingCode": "ALIF",
     "sector": "Textile",
-    "category": "B"
+    "category": "Z"
   },
   {
     "tradingCode": "ALLTEX",
@@ -185,11 +175,6 @@
     "category": "Z"
   },
   {
-    "tradingCode": "APSCLBOND",
-    "sector": "CorpBond",
-    "category": "A"
-  },
-  {
     "tradingCode": "ARAMIT",
     "sector": "Misc",
     "category": "A"
@@ -232,12 +217,7 @@
   {
     "tradingCode": "BANGAS",
     "sector": "FoodAllied",
-    "category": "A"
-  },
-  {
-    "tradingCode": "BANKASI1PB",
-    "sector": "CorpBond",
-    "category": "N"
+    "category": "B"
   },
   {
     "tradingCode": "BANKASIA",
@@ -302,7 +282,7 @@
   {
     "tradingCode": "BDTHAI",
     "sector": "Engineering",
-    "category": "Z"
+    "category": "B"
   },
   {
     "tradingCode": "BDTHAIFOOD",
@@ -340,11 +320,6 @@
     "category": "Z"
   },
   {
-    "tradingCode": "BEXGSUKUK",
-    "sector": "CorpBond",
-    "category": "N"
-  },
-  {
     "tradingCode": "BEXIMCO",
     "sector": "Misc",
     "category": "B"
@@ -372,7 +347,7 @@
   {
     "tradingCode": "BPPL",
     "sector": "FuelPower",
-    "category": "A"
+    "category": "B"
   },
   {
     "tradingCode": "BRACBANK",
@@ -420,11 +395,6 @@
     "category": "A"
   },
   {
-    "tradingCode": "CBLPBOND",
-    "sector": "CorpBond",
-    "category": "A"
-  },
-  {
     "tradingCode": "CENTRALINS",
     "sector": "Insurance",
     "category": "A"
@@ -442,7 +412,7 @@
   {
     "tradingCode": "CITYGENINS",
     "sector": "Insurance",
-    "category": "B"
+    "category": "A"
   },
   {
     "tradingCode": "CLICL",
@@ -452,7 +422,7 @@
   {
     "tradingCode": "CNATEX",
     "sector": "Textile",
-    "category": "B"
+    "category": "Z"
   },
   {
     "tradingCode": "CONFIDCEM",
@@ -462,7 +432,7 @@
   {
     "tradingCode": "CONTININS",
     "sector": "Insurance",
-    "category": "A"
+    "category": "B"
   },
   {
     "tradingCode": "COPPERTECH",
@@ -477,7 +447,7 @@
   {
     "tradingCode": "CRYSTALINS",
     "sector": "Insurance",
-    "category": "N"
+    "category": "A"
   },
   {
     "tradingCode": "CVOPRL",
@@ -505,11 +475,6 @@
     "category": "A"
   },
   {
-    "tradingCode": "DBLPBOND",
-    "sector": "CorpBond",
-    "category": "N"
-  },
-  {
     "tradingCode": "DELTALIFE",
     "sector": "Insurance",
     "category": "A"
@@ -527,7 +492,7 @@
   {
     "tradingCode": "DESHBANDHU",
     "sector": "Engineering",
-    "category": "A"
+    "category": "B"
   },
   {
     "tradingCode": "DGIC",
@@ -627,7 +592,7 @@
   {
     "tradingCode": "EMERALDOIL",
     "sector": "FoodAllied",
-    "category": "A"
+    "category": "Z"
   },
   {
     "tradingCode": "ENVOYTEX",
@@ -742,7 +707,7 @@
   {
     "tradingCode": "GENEXIL",
     "sector": "IT",
-    "category": "Z"
+    "category": "B"
   },
   {
     "tradingCode": "GENNEXT",
@@ -845,16 +810,6 @@
     "category": "A"
   },
   {
-    "tradingCode": "IBBL2PBOND",
-    "sector": "CorpBond",
-    "category": "N"
-  },
-  {
-    "tradingCode": "IBBLPBOND",
-    "sector": "CorpBond",
-    "category": "A"
-  },
-  {
     "tradingCode": "IBNSINA",
     "sector": "PharmaChem",
     "category": "A"
@@ -912,7 +867,7 @@
   {
     "tradingCode": "IFADAUTOS",
     "sector": "Engineering",
-    "category": "A"
+    "category": "B"
   },
   {
     "tradingCode": "IFIC",
@@ -962,7 +917,7 @@
   {
     "tradingCode": "ISLAMICFIN",
     "sector": "Financial In",
-    "category": "A"
+    "category": "Z"
   },
   {
     "tradingCode": "ISLAMIINS",
@@ -977,7 +932,7 @@
   {
     "tradingCode": "ITC",
     "sector": "IT",
-    "category": "B"
+    "category": "A"
   },
   {
     "tradingCode": "JAMUNABANK",
@@ -992,7 +947,7 @@
   {
     "tradingCode": "JANATAINS",
     "sector": "Insurance",
-    "category": "Z"
+    "category": "A"
   },
   {
     "tradingCode": "JHRML",
@@ -1102,7 +1057,7 @@
   {
     "tradingCode": "MAKSONSPIN",
     "sector": "Textile",
-    "category": "A"
+    "category": "Z"
   },
   {
     "tradingCode": "MALEKSPIN",
@@ -1123,11 +1078,6 @@
     "tradingCode": "MBL1STMF",
     "sector": "MutFund",
     "category": "A"
-  },
-  {
-    "tradingCode": "MBPLCPBOND",
-    "sector": "CorpBond",
-    "category": "N"
   },
   {
     "tradingCode": "MEGCONMILK",
@@ -1217,12 +1167,12 @@
   {
     "tradingCode": "MONNOCERA",
     "sector": "Ceramic",
-    "category": "A"
+    "category": "B"
   },
   {
     "tradingCode": "MONNOFABR",
     "sector": "Textile",
-    "category": "Z"
+    "category": "B"
   },
   {
     "tradingCode": "MONOSPOOL",
@@ -1238,11 +1188,6 @@
     "tradingCode": "MTB",
     "sector": "Bank",
     "category": "A"
-  },
-  {
-    "tradingCode": "MTBPBOND",
-    "sector": "CorpBond",
-    "category": "N"
   },
   {
     "tradingCode": "NAHEEACP",
@@ -1307,7 +1252,7 @@
   {
     "tradingCode": "NORTHRNINS",
     "sector": "Insurance",
-    "category": "Z"
+    "category": "A"
   },
   {
     "tradingCode": "NPOLYMER",
@@ -1382,11 +1327,6 @@
   {
     "tradingCode": "PARAMOUNT",
     "sector": "Insurance",
-    "category": "B"
-  },
-  {
-    "tradingCode": "PBLPBOND",
-    "sector": "CorpBond",
     "category": "A"
   },
   {
@@ -1465,11 +1405,6 @@
     "category": "A"
   },
   {
-    "tradingCode": "PREBPBOND",
-    "sector": "CorpBond",
-    "category": "A"
-  },
-  {
     "tradingCode": "PREMIERBAN",
     "sector": "Bank",
     "category": "Z"
@@ -1507,7 +1442,7 @@
   {
     "tradingCode": "PRIMELIFE",
     "sector": "Insurance",
-    "category": "A"
+    "category": "B"
   },
   {
     "tradingCode": "PRIMETEX",
@@ -1657,12 +1592,12 @@
   {
     "tradingCode": "SAIHAMCOT",
     "sector": "Textile",
-    "category": "A"
+    "category": "B"
   },
   {
     "tradingCode": "SAIHAMTEX",
     "sector": "Textile",
-    "category": "A"
+    "category": "B"
   },
   {
     "tradingCode": "SALAMCRST",
@@ -1682,7 +1617,7 @@
   {
     "tradingCode": "SAMORITA",
     "sector": "ServRealEst",
-    "category": "A"
+    "category": "B"
   },
   {
     "tradingCode": "SANDHANINS",
@@ -1708,11 +1643,6 @@
     "tradingCode": "SEAPEARL",
     "sector": "TravelLeisur",
     "category": "B"
-  },
-  {
-    "tradingCode": "SEB1PBOND",
-    "sector": "CorpBond",
-    "category": "N"
   },
   {
     "tradingCode": "SEMLFBSLGF",
@@ -1777,7 +1707,7 @@
   {
     "tradingCode": "SIMTEX",
     "sector": "Textile",
-    "category": "B"
+    "category": "A"
   },
   {
     "tradingCode": "SINGERBD",
@@ -1792,11 +1722,6 @@
   {
     "tradingCode": "SIPLC",
     "sector": "Insurance",
-    "category": "A"
-  },
-  {
-    "tradingCode": "SJIBLPBOND",
-    "sector": "CorpBond",
     "category": "A"
   },
   {
@@ -1905,1081 +1830,6 @@
     "category": "A"
   },
   {
-    "tradingCode": "TB10Y0127",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0130",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0132",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0135",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0231",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0234",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0333",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0335",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0429",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0434",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0530",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0531",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0532",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0535",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0628",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0629",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0630",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0632",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0634",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0730",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0731",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0735",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0829",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0833",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y0932",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y1027",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y1030",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y1031",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y1128",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y1135",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y1229",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB10Y1232",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0127",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0128",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0129",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0227",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0228",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0229",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0327",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0328",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0329",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0339",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0340",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0427",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0428",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0429",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0431",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0437",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0527",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0528",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0529",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0535",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0627",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0628",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0629",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0635",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0637",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0727",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0728",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0729",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0730",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0736",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0828",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0829",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0840",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0927",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0928",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0929",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0930",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y0933",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y1026",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y1027",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y1028",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y1029",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y1126",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y1127",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y1128",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y1129",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y1133",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y1226",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y1227",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB15Y1228",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0128",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0129",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0131",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0132",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0133",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0134",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0143",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0228",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0229",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0230",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0231",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0232",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0233",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0234",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0328",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0329",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0330",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0331",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0332",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0333",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0334",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0342",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0428",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0429",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0430",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0431",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0432",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0433",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0434",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0436",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0528",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0529",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0530",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0531",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0532",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0533",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0534",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0540",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0545",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0628",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0629",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0630",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0631",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0632",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0633",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0634",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0639",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0640",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0641",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0642",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0727",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0728",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0729",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0730",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0731",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0732",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0733",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0734",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0735",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0744",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0827",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0828",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0829",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0830",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0831",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0832",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0833",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0834",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0845",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0927",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0928",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0930",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0931",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0932",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0933",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y0934",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1027",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1028",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1029",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1030",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1031",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1032",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1033",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1034",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1127",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1128",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1130",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1131",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1132",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1133",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1134",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1135",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1138",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1227",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1228",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1229",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1230",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1231",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1232",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1233",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB20Y1242",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB2Y0127",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB2Y0227",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB2Y0327",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB2Y0427",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB2Y0527",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB2Y0627",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB2Y0727",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB2Y0927",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB2Y1026",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB2Y1126",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB2Y1127",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y0128",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y0230",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y0327",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y0428",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y0429",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y0430",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y0527",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y0529",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y0628",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y0630",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y0727",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y0828",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y0928",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y0930",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y1029",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y1126",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y1127",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y1128",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y1130",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y1228",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
-    "tradingCode": "TB5Y1229",
-    "sector": "TBond",
-    "category": "A"
-  },
-  {
     "tradingCode": "TECHNODRUG",
     "sector": "PharmaChem",
     "category": "A"
@@ -3012,17 +1862,12 @@
   {
     "tradingCode": "TUNGHAI",
     "sector": "Textile",
-    "category": "A"
+    "category": "Z"
   },
   {
     "tradingCode": "UCB",
     "sector": "Bank",
     "category": "Z"
-  },
-  {
-    "tradingCode": "UCB2PBOND",
-    "sector": "CorpBond",
-    "category": "A"
   },
   {
     "tradingCode": "UNILEVERCL",
