@@ -1,0 +1,3132 @@
+[
+  {
+    "tradingCode": "1JANATAMF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "1STPRIMFMF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "AAMRANET",
+    "sector": "IT",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "AAMRATECH",
+    "sector": "IT",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "ABB1STMF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ABBANK",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "ABBLPBOND",
+    "sector": "CorpBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ACFL",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ACI",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ACIFORMULA",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ACMELAB",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ACMEPL",
+    "sector": "PharmaChem",
+    "category": "B"
+  },
+  {
+    "tradingCode": "ACTIVEFINE",
+    "sector": "PharmaChem",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "ADNTEL",
+    "sector": "IT",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ADVENT",
+    "sector": "PharmaChem",
+    "category": "B"
+  },
+  {
+    "tradingCode": "AFCAGRO",
+    "sector": "PharmaChem",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "AFTABAUTO",
+    "sector": "Engineering",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "AGNISYSL",
+    "sector": "IT",
+    "category": "B"
+  },
+  {
+    "tradingCode": "AGRANINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "AIBL1STIMF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "AIBLPBOND",
+    "sector": "CorpBond",
+    "category": "N"
+  },
+  {
+    "tradingCode": "AIL",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "AL-HAJTEX",
+    "sector": "Textile",
+    "category": "B"
+  },
+  {
+    "tradingCode": "ALARABANK",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "ALIF",
+    "sector": "Textile",
+    "category": "B"
+  },
+  {
+    "tradingCode": "ALLTEX",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "AMANFEED",
+    "sector": "Misc",
+    "category": "A"
+  },
+  {
+    "tradingCode": "AMBEEPHA",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "AMCL(PRAN)",
+    "sector": "FoodAllied",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ANLIMAYARN",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "ANWARGALV",
+    "sector": "Engineering",
+    "category": "A"
+  },
+  {
+    "tradingCode": "AOL",
+    "sector": "FuelPower",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "APEXFOODS",
+    "sector": "FoodAllied",
+    "category": "A"
+  },
+  {
+    "tradingCode": "APEXFOOT",
+    "sector": "Tannery",
+    "category": "A"
+  },
+  {
+    "tradingCode": "APEXSPINN",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "APEXTANRY",
+    "sector": "Tannery",
+    "category": "B"
+  },
+  {
+    "tradingCode": "APOLOISPAT",
+    "sector": "Engineering",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "APSCLBOND",
+    "sector": "CorpBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ARAMIT",
+    "sector": "Misc",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ARAMITCEM",
+    "sector": "Cement",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "ARGONDENIM",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ASIAINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ASIAPACINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ASIATICLAB",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ATLASBANG",
+    "sector": "Engineering",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "AZIZPIPES",
+    "sector": "Engineering",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "BANGAS",
+    "sector": "FoodAllied",
+    "category": "A"
+  },
+  {
+    "tradingCode": "BANKASI1PB",
+    "sector": "CorpBond",
+    "category": "N"
+  },
+  {
+    "tradingCode": "BANKASIA",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "BARKAPOWER",
+    "sector": "FuelPower",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "BATASHOE",
+    "sector": "Tannery",
+    "category": "A"
+  },
+  {
+    "tradingCode": "BATBC",
+    "sector": "FoodAllied",
+    "category": "A"
+  },
+  {
+    "tradingCode": "BAYLEASING",
+    "sector": "Financial In",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "BBS",
+    "sector": "Engineering",
+    "category": "B"
+  },
+  {
+    "tradingCode": "BBSCABLES",
+    "sector": "Engineering",
+    "category": "B"
+  },
+  {
+    "tradingCode": "BDAUTOCA",
+    "sector": "Engineering",
+    "category": "B"
+  },
+  {
+    "tradingCode": "BDCOM",
+    "sector": "IT",
+    "category": "A"
+  },
+  {
+    "tradingCode": "BDFINANCE",
+    "sector": "Financial In",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "BDLAMPS",
+    "sector": "Engineering",
+    "category": "A"
+  },
+  {
+    "tradingCode": "BDSERVICE",
+    "sector": "TravelLeisur",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "BDTHAI",
+    "sector": "Engineering",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "BDTHAIFOOD",
+    "sector": "FoodAllied",
+    "category": "B"
+  },
+  {
+    "tradingCode": "BDWELDING",
+    "sector": "FuelPower",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "BEACHHATCH",
+    "sector": "FoodAllied",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "BEACONPHAR",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "BENGALWTL",
+    "sector": "Engineering",
+    "category": "B"
+  },
+  {
+    "tradingCode": "BERGERPBL",
+    "sector": "Misc",
+    "category": "A"
+  },
+  {
+    "tradingCode": "BESTHLDNG",
+    "sector": "TravelLeisur",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "BEXGSUKUK",
+    "sector": "CorpBond",
+    "category": "N"
+  },
+  {
+    "tradingCode": "BEXIMCO",
+    "sector": "Misc",
+    "category": "B"
+  },
+  {
+    "tradingCode": "BGIC",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "BIFC",
+    "sector": "Financial In",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "BNICL",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "BPML",
+    "sector": "PaperPrint",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "BPPL",
+    "sector": "FuelPower",
+    "category": "A"
+  },
+  {
+    "tradingCode": "BRACBANK",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "BSC",
+    "sector": "Misc",
+    "category": "A"
+  },
+  {
+    "tradingCode": "BSCPLC",
+    "sector": "Telecom",
+    "category": "A"
+  },
+  {
+    "tradingCode": "BSRMLTD",
+    "sector": "Engineering",
+    "category": "A"
+  },
+  {
+    "tradingCode": "BSRMSTEEL",
+    "sector": "Engineering",
+    "category": "A"
+  },
+  {
+    "tradingCode": "BXPHARMA",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "CAPITECGBF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "CAPMBDBLMF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "CAPMIBBLMF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "CBLPBOND",
+    "sector": "CorpBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "CENTRALINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "CENTRALPHL",
+    "sector": "PharmaChem",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "CITYBANK",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "CITYGENINS",
+    "sector": "Insurance",
+    "category": "B"
+  },
+  {
+    "tradingCode": "CLICL",
+    "sector": "Insurance",
+    "category": "B"
+  },
+  {
+    "tradingCode": "CNATEX",
+    "sector": "Textile",
+    "category": "B"
+  },
+  {
+    "tradingCode": "CONFIDCEM",
+    "sector": "Cement",
+    "category": "A"
+  },
+  {
+    "tradingCode": "CONTININS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "COPPERTECH",
+    "sector": "Engineering",
+    "category": "B"
+  },
+  {
+    "tradingCode": "CROWNCEMNT",
+    "sector": "Cement",
+    "category": "A"
+  },
+  {
+    "tradingCode": "CRYSTALINS",
+    "sector": "Insurance",
+    "category": "N"
+  },
+  {
+    "tradingCode": "CVOPRL",
+    "sector": "FuelPower",
+    "category": "A"
+  },
+  {
+    "tradingCode": "DACCADYE",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "DAFODILCOM",
+    "sector": "IT",
+    "category": "B"
+  },
+  {
+    "tradingCode": "DBH",
+    "sector": "Financial In",
+    "category": "A"
+  },
+  {
+    "tradingCode": "DBH1STMF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "DBLPBOND",
+    "sector": "CorpBond",
+    "category": "N"
+  },
+  {
+    "tradingCode": "DELTALIFE",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "DELTASPINN",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "DESCO",
+    "sector": "FuelPower",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "DESHBANDHU",
+    "sector": "Engineering",
+    "category": "A"
+  },
+  {
+    "tradingCode": "DGIC",
+    "sector": "Insurance",
+    "category": "B"
+  },
+  {
+    "tradingCode": "DHAKABANK",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "DHAKAINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "DOMINAGE",
+    "sector": "Engineering",
+    "category": "B"
+  },
+  {
+    "tradingCode": "DOREENPWR",
+    "sector": "FuelPower",
+    "category": "A"
+  },
+  {
+    "tradingCode": "DSHGARME",
+    "sector": "Textile",
+    "category": "B"
+  },
+  {
+    "tradingCode": "DSSL",
+    "sector": "Textile",
+    "category": "B"
+  },
+  {
+    "tradingCode": "DULAMIACOT",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "DUTCHBANGL",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "EASTERNINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "EASTLAND",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "EASTRNLUB",
+    "sector": "FuelPower",
+    "category": "A"
+  },
+  {
+    "tradingCode": "EBL",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "EBL1STMF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "EBLNRBMF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ECABLES",
+    "sector": "Engineering",
+    "category": "B"
+  },
+  {
+    "tradingCode": "EGEN",
+    "sector": "IT",
+    "category": "B"
+  },
+  {
+    "tradingCode": "EHL",
+    "sector": "ServRealEst",
+    "category": "A"
+  },
+  {
+    "tradingCode": "EIL",
+    "sector": "Insurance",
+    "category": "B"
+  },
+  {
+    "tradingCode": "EMERALDOIL",
+    "sector": "FoodAllied",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ENVOYTEX",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "EPGL",
+    "sector": "FuelPower",
+    "category": "B"
+  },
+  {
+    "tradingCode": "ESQUIRENIT",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ETL",
+    "sector": "Textile",
+    "category": "B"
+  },
+  {
+    "tradingCode": "EXIM1STMF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "EXIMBANK",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "FAMILYTEX",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "FARCHEM",
+    "sector": "PharmaChem",
+    "category": "B"
+  },
+  {
+    "tradingCode": "FAREASTFIN",
+    "sector": "Financial In",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "FAREASTLIF",
+    "sector": "Insurance",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "FASFIN",
+    "sector": "Financial In",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "FBFIF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "FEDERALINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "FEKDIL",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "FINEFOODS",
+    "sector": "FoodAllied",
+    "category": "A"
+  },
+  {
+    "tradingCode": "FIRSTFIN",
+    "sector": "Financial In",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "FIRSTSBANK",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "FORTUNE",
+    "sector": "Tannery",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "FUWANGCER",
+    "sector": "Ceramic",
+    "category": "B"
+  },
+  {
+    "tradingCode": "FUWANGFOOD",
+    "sector": "FoodAllied",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "GBBPOWER",
+    "sector": "FuelPower",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "GEMINISEA",
+    "sector": "FoodAllied",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "GENEXIL",
+    "sector": "IT",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "GENNEXT",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "GHAIL",
+    "sector": "FoodAllied",
+    "category": "B"
+  },
+  {
+    "tradingCode": "GHCL",
+    "sector": "PharmaChem",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "GIB",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "GLDNJMF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "GLOBALINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "GOLDENSON",
+    "sector": "Engineering",
+    "category": "B"
+  },
+  {
+    "tradingCode": "GP",
+    "sector": "Telecom",
+    "category": "A"
+  },
+  {
+    "tradingCode": "GPHISPAT",
+    "sector": "Engineering",
+    "category": "B"
+  },
+  {
+    "tradingCode": "GQBALLPEN",
+    "sector": "Misc",
+    "category": "A"
+  },
+  {
+    "tradingCode": "GRAMEENS2",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "GREENDELMF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "GREENDELT",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "GSPFINANCE",
+    "sector": "Financial In",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "HAKKANIPUL",
+    "sector": "PaperPrint",
+    "category": "B"
+  },
+  {
+    "tradingCode": "HAMI",
+    "sector": "Misc",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "HEIDELBCEM",
+    "sector": "Cement",
+    "category": "A"
+  },
+  {
+    "tradingCode": "HFL",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "HRTEX",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "HWAWELLTEX",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "IBBL2PBOND",
+    "sector": "CorpBond",
+    "category": "N"
+  },
+  {
+    "tradingCode": "IBBLPBOND",
+    "sector": "CorpBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "IBNSINA",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "IBP",
+    "sector": "PharmaChem",
+    "category": "B"
+  },
+  {
+    "tradingCode": "ICB",
+    "sector": "Financial In",
+    "category": "B"
+  },
+  {
+    "tradingCode": "ICB3RDNRB",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ICBAGRANI1",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ICBAMCL2ND",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ICBEPMF1S1",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ICBIBANK",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "ICBSONALI1",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ICICL",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "IDLC",
+    "sector": "Financial In",
+    "category": "A"
+  },
+  {
+    "tradingCode": "IFADAUTOS",
+    "sector": "Engineering",
+    "category": "A"
+  },
+  {
+    "tradingCode": "IFIC",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "IFIC1STMF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "IFILISLMF1",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ILFSL",
+    "sector": "Financial In",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "INDEXAGRO",
+    "sector": "Misc",
+    "category": "A"
+  },
+  {
+    "tradingCode": "INTECH",
+    "sector": "IT",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "INTRACO",
+    "sector": "FuelPower",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "IPDC",
+    "sector": "Financial In",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ISLAMIBANK",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "ISLAMICFIN",
+    "sector": "Financial In",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ISLAMIINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ISNLTD",
+    "sector": "IT",
+    "category": "B"
+  },
+  {
+    "tradingCode": "ITC",
+    "sector": "IT",
+    "category": "B"
+  },
+  {
+    "tradingCode": "JAMUNABANK",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "JAMUNAOIL",
+    "sector": "FuelPower",
+    "category": "A"
+  },
+  {
+    "tradingCode": "JANATAINS",
+    "sector": "Insurance",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "JHRML",
+    "sector": "PharmaChem",
+    "category": "B"
+  },
+  {
+    "tradingCode": "JMISMDL",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "JUTESPINN",
+    "sector": "Jute",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "KARNAPHULI",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "KAY&QUE",
+    "sector": "Engineering",
+    "category": "B"
+  },
+  {
+    "tradingCode": "KBPPWBIL",
+    "sector": "Misc",
+    "category": "A"
+  },
+  {
+    "tradingCode": "KDSALTD",
+    "sector": "Engineering",
+    "category": "A"
+  },
+  {
+    "tradingCode": "KEYACOSMET",
+    "sector": "PharmaChem",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "KOHINOOR",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "KPCL",
+    "sector": "FuelPower",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "KPPL",
+    "sector": "PaperPrint",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "KTL",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "LANKABAFIN",
+    "sector": "Financial In",
+    "category": "A"
+  },
+  {
+    "tradingCode": "LEGACYFOOT",
+    "sector": "Tannery",
+    "category": "B"
+  },
+  {
+    "tradingCode": "LHB",
+    "sector": "Cement",
+    "category": "A"
+  },
+  {
+    "tradingCode": "LIBRAINFU",
+    "sector": "PharmaChem",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "LINDEBD",
+    "sector": "FuelPower",
+    "category": "A"
+  },
+  {
+    "tradingCode": "LOVELLO",
+    "sector": "FoodAllied",
+    "category": "A"
+  },
+  {
+    "tradingCode": "LRBDL",
+    "sector": "FuelPower",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "LRGLOBMF1",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "MAGURAPLEX",
+    "sector": "PaperPrint",
+    "category": "A"
+  },
+  {
+    "tradingCode": "MAKSONSPIN",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "MALEKSPIN",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "MARICO",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "MATINSPINN",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "MBL1STMF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "MBPLCPBOND",
+    "sector": "CorpBond",
+    "category": "N"
+  },
+  {
+    "tradingCode": "MEGCONMILK",
+    "sector": "FoodAllied",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "MEGHNACEM",
+    "sector": "Cement",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "MEGHNAINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "MEGHNALIFE",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "MEGHNAPET",
+    "sector": "FoodAllied",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "MERCANBANK",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "MERCINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "METROSPIN",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "MHSML",
+    "sector": "Textile",
+    "category": "B"
+  },
+  {
+    "tradingCode": "MIDASFIN",
+    "sector": "Financial In",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "MIDLANDBNK",
+    "sector": "Bank",
+    "category": "B"
+  },
+  {
+    "tradingCode": "MIRACLEIND",
+    "sector": "Misc",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "MIRAKHTER",
+    "sector": "Engineering",
+    "category": "A"
+  },
+  {
+    "tradingCode": "MITHUNKNIT",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "MJLBD",
+    "sector": "FuelPower",
+    "category": "A"
+  },
+  {
+    "tradingCode": "MLDYEING",
+    "sector": "Textile",
+    "category": "B"
+  },
+  {
+    "tradingCode": "MONNOAGML",
+    "sector": "Engineering",
+    "category": "B"
+  },
+  {
+    "tradingCode": "MONNOCERA",
+    "sector": "Ceramic",
+    "category": "A"
+  },
+  {
+    "tradingCode": "MONNOFABR",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "MONOSPOOL",
+    "sector": "PaperPrint",
+    "category": "A"
+  },
+  {
+    "tradingCode": "MPETROLEUM",
+    "sector": "FuelPower",
+    "category": "A"
+  },
+  {
+    "tradingCode": "MTB",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "MTBPBOND",
+    "sector": "CorpBond",
+    "category": "N"
+  },
+  {
+    "tradingCode": "NAHEEACP",
+    "sector": "Engineering",
+    "category": "B"
+  },
+  {
+    "tradingCode": "NATLIFEINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "NAVANACNG",
+    "sector": "Engineering",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "NAVANAPHAR",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "NBL",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "NCCBANK",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "NCCBLMF1",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "NEWLINE",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "NFML",
+    "sector": "Misc",
+    "category": "B"
+  },
+  {
+    "tradingCode": "NHFIL",
+    "sector": "Financial In",
+    "category": "A"
+  },
+  {
+    "tradingCode": "NITOLINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "NORTHERN",
+    "sector": "Jute",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "NORTHRNINS",
+    "sector": "Insurance",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "NPOLYMER",
+    "sector": "Engineering",
+    "category": "B"
+  },
+  {
+    "tradingCode": "NRBBANK",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "NRBCBANK",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "NTC",
+    "sector": "FoodAllied",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "NTLTUBES",
+    "sector": "Engineering",
+    "category": "B"
+  },
+  {
+    "tradingCode": "NURANI",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "OAL",
+    "sector": "Engineering",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "OIMEX",
+    "sector": "Engineering",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "OLYMPIC",
+    "sector": "FoodAllied",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ONEBANKPLC",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "ORIONINFU",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "ORIONPHARM",
+    "sector": "PharmaChem",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "PADMALIFE",
+    "sector": "Insurance",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "PADMAOIL",
+    "sector": "FuelPower",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PARAMOUNT",
+    "sector": "Insurance",
+    "category": "B"
+  },
+  {
+    "tradingCode": "PBLPBOND",
+    "sector": "CorpBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PDL",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "PENINSULA",
+    "sector": "TravelLeisur",
+    "category": "B"
+  },
+  {
+    "tradingCode": "PEOPLESINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PF1STMF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PHARMAID",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PHENIXINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PHOENIXFIN",
+    "sector": "Financial In",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "PHPMF1",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PIONEERINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PLFSL",
+    "sector": "Financial In",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "POPULAR1MF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "POPULARLIF",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "POWERGRID",
+    "sector": "FuelPower",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "PRAGATIINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PRAGATILIF",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PREBPBOND",
+    "sector": "CorpBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PREMIERBAN",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "PREMIERCEM",
+    "sector": "Cement",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PREMIERLEA",
+    "sector": "Financial In",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "PRIME1ICBA",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PRIMEBANK",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PRIMEFIN",
+    "sector": "Financial In",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "PRIMEINSUR",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PRIMELIFE",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PRIMETEX",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "PROGRESLIF",
+    "sector": "Insurance",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "PROVATIINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PTL",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PUBALIBANK",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "PURABIGEN",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "QUASEMIND",
+    "sector": "Engineering",
+    "category": "A"
+  },
+  {
+    "tradingCode": "QUEENSOUTH",
+    "sector": "Textile",
+    "category": "B"
+  },
+  {
+    "tradingCode": "RAHIMAFOOD",
+    "sector": "FoodAllied",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "RAHIMTEXT",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "RAKCERAMIC",
+    "sector": "Ceramic",
+    "category": "A"
+  },
+  {
+    "tradingCode": "RANFOUNDRY",
+    "sector": "Engineering",
+    "category": "A"
+  },
+  {
+    "tradingCode": "RDFOOD",
+    "sector": "FoodAllied",
+    "category": "B"
+  },
+  {
+    "tradingCode": "RECKITTBEN",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "REGENTTEX",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "RELIANCE1",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "RELIANCINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "RENATA",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "RENWICKJA",
+    "sector": "Engineering",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "REPUBLIC",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "RINGSHINE",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "ROBI",
+    "sector": "Telecom",
+    "category": "A"
+  },
+  {
+    "tradingCode": "RSRMSTEEL",
+    "sector": "Engineering",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "RUNNERAUTO",
+    "sector": "Engineering",
+    "category": "A"
+  },
+  {
+    "tradingCode": "RUPALIBANK",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "RUPALIINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "RUPALILIFE",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SAFKOSPINN",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "SAIFPOWER",
+    "sector": "ServRealEst",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "SAIHAMCOT",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SAIHAMTEX",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SALAMCRST",
+    "sector": "Engineering",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "SALVO",
+    "sector": "PharmaChem",
+    "category": "B"
+  },
+  {
+    "tradingCode": "SAMATALETH",
+    "sector": "Tannery",
+    "category": "B"
+  },
+  {
+    "tradingCode": "SAMORITA",
+    "sector": "ServRealEst",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SANDHANINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SAPORTL",
+    "sector": "ServRealEst",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SAVAREFR",
+    "sector": "Misc",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "SBACBANK",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "SEAPEARL",
+    "sector": "TravelLeisur",
+    "category": "B"
+  },
+  {
+    "tradingCode": "SEB1PBOND",
+    "sector": "CorpBond",
+    "category": "N"
+  },
+  {
+    "tradingCode": "SEMLFBSLGF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SEMLIBBLSF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SHAHJABANK",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SHARPIND",
+    "sector": "Textile",
+    "category": "B"
+  },
+  {
+    "tradingCode": "SHASHADNIM",
+    "sector": "Textile",
+    "category": "B"
+  },
+  {
+    "tradingCode": "SHEPHERD",
+    "sector": "Textile",
+    "category": "B"
+  },
+  {
+    "tradingCode": "SHURWID",
+    "sector": "Engineering",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "SHYAMPSUG",
+    "sector": "FoodAllied",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "SIBL",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SICL",
+    "sector": "Insurance",
+    "category": "B"
+  },
+  {
+    "tradingCode": "SILCOPHL",
+    "sector": "PharmaChem",
+    "category": "B"
+  },
+  {
+    "tradingCode": "SILVAPHL",
+    "sector": "PharmaChem",
+    "category": "B"
+  },
+  {
+    "tradingCode": "SIMTEX",
+    "sector": "Textile",
+    "category": "B"
+  },
+  {
+    "tradingCode": "SINGERBD",
+    "sector": "Engineering",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "SINOBANGLA",
+    "sector": "Misc",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SIPLC",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SJIBLPBOND",
+    "sector": "CorpBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SKTRIMS",
+    "sector": "Misc",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "SONALIANSH",
+    "sector": "Jute",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SONALILIFE",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SONALIPAPR",
+    "sector": "PaperPrint",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SONARBAINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SONARGAON",
+    "sector": "Textile",
+    "category": "B"
+  },
+  {
+    "tradingCode": "SOUTHEASTB",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SPCERAMICS",
+    "sector": "Ceramic",
+    "category": "B"
+  },
+  {
+    "tradingCode": "SPCL",
+    "sector": "FuelPower",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SQUARETEXT",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SQURPHARMA",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SSSTEEL",
+    "sector": "Engineering",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "STANCERAM",
+    "sector": "Ceramic",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "STANDARINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "STANDBANKL",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "STYLECRAFT",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "SUMITPOWER",
+    "sector": "FuelPower",
+    "category": "A"
+  },
+  {
+    "tradingCode": "SUNLIFEINS",
+    "sector": "Insurance",
+    "category": "B"
+  },
+  {
+    "tradingCode": "TAKAFULINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TALLUSPIN",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "TAMIJTEX",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0127",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0130",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0132",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0135",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0231",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0234",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0333",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0335",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0429",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0434",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0530",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0531",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0532",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0535",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0628",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0629",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0630",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0632",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0634",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0730",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0731",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0735",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0829",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0833",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y0932",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y1027",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y1030",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y1031",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y1128",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y1135",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y1229",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB10Y1232",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0127",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0128",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0129",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0227",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0228",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0229",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0327",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0328",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0329",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0339",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0340",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0427",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0428",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0429",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0431",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0437",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0527",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0528",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0529",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0535",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0627",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0628",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0629",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0635",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0637",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0727",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0728",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0729",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0730",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0736",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0828",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0829",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0840",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0927",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0928",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0929",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0930",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y0933",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y1026",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y1027",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y1028",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y1029",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y1126",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y1127",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y1128",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y1129",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y1133",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y1226",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y1227",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB15Y1228",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0128",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0129",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0131",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0132",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0133",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0134",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0143",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0228",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0229",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0230",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0231",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0232",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0233",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0234",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0328",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0329",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0330",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0331",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0332",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0333",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0334",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0342",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0428",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0429",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0430",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0431",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0432",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0433",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0434",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0436",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0528",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0529",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0530",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0531",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0532",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0533",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0534",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0540",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0545",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0628",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0629",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0630",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0631",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0632",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0633",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0634",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0639",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0640",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0641",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0642",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0727",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0728",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0729",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0730",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0731",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0732",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0733",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0734",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0735",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0744",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0827",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0828",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0829",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0830",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0831",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0832",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0833",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0834",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0845",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0927",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0928",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0930",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0931",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0932",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0933",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y0934",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1027",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1028",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1029",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1030",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1031",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1032",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1033",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1034",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1127",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1128",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1130",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1131",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1132",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1133",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1134",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1135",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1138",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1227",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1228",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1229",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1230",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1231",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1232",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1233",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB20Y1242",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB2Y0127",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB2Y0227",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB2Y0327",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB2Y0427",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB2Y0527",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB2Y0627",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB2Y0727",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB2Y0927",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB2Y1026",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB2Y1126",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB2Y1127",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y0128",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y0230",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y0327",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y0428",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y0429",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y0430",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y0527",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y0529",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y0628",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y0630",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y0727",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y0828",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y0928",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y0930",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y1029",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y1126",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y1127",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y1128",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y1130",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y1228",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TB5Y1229",
+    "sector": "TBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TECHNODRUG",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TILIL",
+    "sector": "Insurance",
+    "category": "B"
+  },
+  {
+    "tradingCode": "TITASGAS",
+    "sector": "FuelPower",
+    "category": "B"
+  },
+  {
+    "tradingCode": "TOSRIFA",
+    "sector": "Textile",
+    "category": "B"
+  },
+  {
+    "tradingCode": "TRUSTB1MF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TRUSTBANK",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "TUNGHAI",
+    "sector": "Textile",
+    "category": "A"
+  },
+  {
+    "tradingCode": "UCB",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "UCB2PBOND",
+    "sector": "CorpBond",
+    "category": "A"
+  },
+  {
+    "tradingCode": "UNILEVERCL",
+    "sector": "FoodAllied",
+    "category": "A"
+  },
+  {
+    "tradingCode": "UNIONBANK",
+    "sector": "Bank",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "UNIONCAP",
+    "sector": "Financial In",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "UNIONINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "UNIQUEHRL",
+    "sector": "TravelLeisur",
+    "category": "A"
+  },
+  {
+    "tradingCode": "UNITEDFIN",
+    "sector": "Financial In",
+    "category": "A"
+  },
+  {
+    "tradingCode": "UNITEDINS",
+    "sector": "Insurance",
+    "category": "A"
+  },
+  {
+    "tradingCode": "UPGDCL",
+    "sector": "FuelPower",
+    "category": "A"
+  },
+  {
+    "tradingCode": "USMANIAGL",
+    "sector": "Misc",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "UTTARABANK",
+    "sector": "Bank",
+    "category": "A"
+  },
+  {
+    "tradingCode": "UTTARAFIN",
+    "sector": "Financial In",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "VAMLBDMF1",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "VAMLRBBF",
+    "sector": "MutFund",
+    "category": "A"
+  },
+  {
+    "tradingCode": "VFSTDL",
+    "sector": "Textile",
+    "category": "B"
+  },
+  {
+    "tradingCode": "WALTONHIL",
+    "sector": "Engineering",
+    "category": "A"
+  },
+  {
+    "tradingCode": "WATACHEM",
+    "sector": "PharmaChem",
+    "category": "A"
+  },
+  {
+    "tradingCode": "WMSHIPYARD",
+    "sector": "Engineering",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "YPL",
+    "sector": "Engineering",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "ZAHEENSPIN",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "ZAHINTEX",
+    "sector": "Textile",
+    "category": "Z"
+  },
+  {
+    "tradingCode": "ZEALBANGLA",
+    "sector": "FoodAllied",
+    "category": "Z"
+  }
+]

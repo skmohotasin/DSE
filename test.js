@@ -1,54 +1,65 @@
-const axios = require('axios');
+const http = require('./lib/http');
 const cheerio = require('cheerio');
 
-async function scrapeNAV(symbol) {
-    try {
-        const { data } = await axios.get(`https://dsebd.org/displayCompany.php?name=${symbol}`, {
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
-            }
-        });
+function clean(text) {
+    return text.replace(/\s+/g, ' ').trim();
+}
 
+async function scrapeGovtShare(symbol) {
+    try {
+        const { data } = await http.get(`https://www.dsebd.org/company/${encodeURIComponent(symbol)}`);
         const $ = cheerio.load(data);
 
-        const targetTable = $('table#company').eq(10);
-        let govtShare = '';
+        const heading = $('h3').filter((_, el) => /shareholding pattern/i.test($(el).text())).first();
+        if (!heading.length) {
+            console.warn(`No shareholding pattern found for ${symbol}`);
+            return null;
+        }
 
-        targetTable.find('tbody tr').each((_, tr) => {
-            const firstTd = $(tr).find('td').first().text().trim();
-            if (firstTd.includes('Share Holding Percentage') && firstTd.includes('Jun 30, 2025')) {
-                const nestedTds = $(tr).find('td').eq(1).find('table tbody tr td');
-                nestedTds.each((_, td) => {
-                    const text = $(td).text().trim();
-                    if (text.startsWith('Govt:')) {
-                        govtShare = text.split('Govt:')[1].trim();
-                    }
-                });
-            }
+        const datesGrid = heading.parent().next();
+        const rowsWrap = datesGrid.next();
+
+        const dates = datesGrid.children('div').map((_, el) => clean($(el).text())).get().filter(Boolean);
+
+        let govtValues = [];
+        rowsWrap.children('div').each((_, row) => {
+            const label = clean($(row).find('span.truncate').first().text());
+            if (!/^government$/i.test(label)) return;
+
+            govtValues = $(row).find('div.tnum').map((__, cell) => clean($(cell).text()).replace(/\s+/g, '')).get();
         });
 
-        console.log('Govt Share Holding (as on Jun 30, 2025):', govtShare);
-        return { Dividend: govtShare };
+        if (!govtValues.length) {
+            console.warn(`No government shareholding row found for ${symbol}`);
+            return null;
+        }
+
+        const asOn = dates[dates.length - 1] || '';
+        const govtShare = govtValues[govtValues.length - 1];
+
+        console.log(`Govt share holding (${asOn}):`, govtShare);
+        return { asOn, govtShare, dates, govtValues };
 
     } catch (err) {
-        console.warn(`⚠️ Could not fetch NAV for ${symbol}: ${err.message}`);
+        console.warn(`Could not fetch govt share for ${symbol}: ${err.message}`);
         return null;
     }
 }
+
 async function test() {
     const symbol = process.argv[2];
     if (!symbol) {
-        console.error('Usage: node scrapeNAV.js [SYMBOL]');
+        console.error('Usage: node test.js [SYMBOL]');
         process.exit(1);
     }
 
-    console.log(`Fetching NAV for symbol: ${symbol} ...`);
-    const data = await scrapeNAV(symbol);
+    console.log(`Fetching govt share holding for ${symbol} ...`);
+    const data = await scrapeGovtShare(symbol);
 
     if (data) {
-        console.log('NAV:', data.Dividend);
+        console.log('Govt share:', data.govtShare);
     } else {
-        console.log('Failed to fetch NAV.');
+        console.log('Failed to fetch govt share holding.');
     }
 }
 
