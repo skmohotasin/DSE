@@ -1,8 +1,8 @@
 const http = require('../lib/http');
-const cheerio = require('cheerio');
 const XLSX = require('xlsx');
 const cliProgress = require('cli-progress');
 const { uploadExcelToGoogleSheets } = require('./googleSheetsRSI1Y');
+const companies = require('../data/companies.json');
 
 function generateLast365Days() {
     const dates = [];
@@ -18,54 +18,58 @@ function generateLast365Days() {
     return dates;
 }
 
-async function fetchTradingCodesFromURL(url, columnIndex = 1) {
-    const { data } = await http.get(url);
-    const $ = cheerio.load(data);
-    const codes = [];
-    $('.table.table-bordered tr').slice(1).each((_, row) => {
-        const cols = $(row).find('td');
-        if (cols.length > columnIndex) {
-            const code = $(cols[columnIndex]).text().trim();
-            if (code) codes.push(code);
-        }
-    });
-    return codes;
+function getAllTradingCodes() {
+    return [...new Set(
+        companies
+            .filter((company) => company.category === 'A' || company.category === 'B' || company.sector === 'Bank')
+            .map((company) => company.tradingCode)
+    )];
 }
 
-async function getAllTradingCodes() {
-    const categoryAURL = 'https://dsebd.org/latest_share_price_scroll_group.php?group=A';
-    const categoryBURL = 'https://dsebd.org/latest_share_price_scroll_group.php?group=B';
-    const bankURL = 'https://www.dsebd.org/ltp_industry.php?area=11';
+function extractSeries(html) {
+    const marker = '\\"series\\":';
+    const start = html.indexOf(marker);
+    if (start < 0) return [];
 
-    const [codesA, codesB, codesBank] = await Promise.all([
-        fetchTradingCodesFromURL(categoryAURL),
-        fetchTradingCodesFromURL(categoryBURL),
-        fetchTradingCodesFromURL(bankURL)
-    ]);
+    let i = start + marker.length;
+    if (html[i] !== '[') return [];
 
-    return [...new Set([...codesA, ...codesB, ...codesBank])];
+    let depth = 0;
+    let out = '';
+    let inString = false;
+    for (; i < html.length; i++) {
+        const ch = html[i];
+        out += ch;
+        if (ch === '\\') {
+            out += html[++i] || '';
+            continue;
+        }
+        if (ch === '"') inString = !inString;
+        if (inString) continue;
+        if (ch === '[') depth++;
+        else if (ch === ']') {
+            depth--;
+            if (depth === 0) break;
+        }
+    }
+
+    return JSON.parse(out.replace(/\\"/g, '"').replace(/\\\\/g, '\\'));
 }
 
 async function fetchRSIData(code) {
     try {
-        const url = `https://www.dsebd.org/php_graph/monthly_graph.php?inst=${code}&duration=12&type=price`;
-        const { data } = await http.get(url);
-
-        const regex = /"Date,Price\\n(.+?)"\s*,/s;
-        const match = data.match(regex);
-        if (!match) return [];
-
-        return match[1].split('\\n').filter(l => l.trim()).map(line => {
-            const [date, price] = line.split(',');
-            return [date.trim(), parseFloat(price)];
-        });
+        const { data } = await http.get(`https://www.dsebd.org/company/${encodeURIComponent(code)}`);
+        const series = extractSeries(data);
+        return series
+            .filter((point) => point.date && Number.isFinite(Number(point.price)))
+            .map((point) => [point.date, Number(point.price)]);
     } catch (err) {
-        console.error(`❌ Failed to fetch RSI data for ${code}:`, err.message);
+        console.error(`Failed to fetch RSI data for ${code}:`, err.message);
         return [];
     }
 }
 
-(async () => {
+async function main() {
     const codes = await getAllTradingCodes();
     console.log(`Found ${codes.length} trading codes`);
 
@@ -113,12 +117,8 @@ async function fetchRSIData(code) {
         if (rsiData.length) {
             const datePriceMap = {};
             rsiData.forEach(([date, price]) => {
-                const d = new Date(date);
-                const day = String(d.getDate()).padStart(2, '0');
-                const month = String(d.getMonth() + 1).padStart(2, '0');
-                const year = d.getFullYear();
-                const formatted = `${day}/${month}/${year}`;
-                datePriceMap[formatted] = price;
+                const [year, month, day] = date.split('-');
+                datePriceMap[`${day}/${month}/${year}`] = price;
             });
 
             for (let i = dates.length - 360; i < dates.length; i++) {
@@ -141,5 +141,11 @@ async function fetchRSIData(code) {
 
     console.log('✅ Price 1Y updated and saved: Price_1Y_temp.xlsx');
     await uploadExcelToGoogleSheets('./Price_1Y_temp.xlsx', '1FxV4HYgoV7qYXjw6eEqF4Ax4tjHQqVJ9G-fwKLxaHxI');
-    console.log('✅ Uploaded to Google Sheets');
-})();
+    console.log('Uploaded to Google Sheets');
+}
+
+if (require.main === module) {
+    main();
+}
+
+module.exports = { fetchRSIData, getAllTradingCodes };
